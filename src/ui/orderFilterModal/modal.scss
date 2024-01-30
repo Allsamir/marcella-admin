@@ -1,0 +1,36 @@
+.orderModal{
+
+    .modal-dialog {
+      max-width: 1200px;
+      width: 80vw;
+      }
+}
+
+
+  .modal-dialog {
+    max-width: 1200px;
+    width: 80vw;
+    }
+  .salesCard{
+    width: 280px;
+    height: 150px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+  .sales{
+    background-color: blue;
+  }
+  .userInfo{
+    background-color: green;
+  }
+  .shipping{
+    background-color: green;
+  }
+  .orders{
+    background-color: rgb(212, 171, 95);
+  }

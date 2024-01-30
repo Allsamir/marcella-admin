@@ -1,0 +1,61 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+
+import { CTableDataCell, CTableHeaderCell, CTableRow } from "@coreui/react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDeleteSingleTermConditionMutation } from "src/redux/terms&condition/termsConditionApi";
+import DeleteButton from "src/ui/button/DeleteButton";
+import EditButton from "src/ui/button/EditButton";
+import DeleteModal from "src/ui/DeleteModal";
+
+const TermsConditionsTableRow = ({ index, blog }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [
+    deleteSingleTermCondition,
+    { isLoading: deleteLoading, isError: deleteError, error: errorMsg, isSuccess },
+  ] = useDeleteSingleTermConditionMutation();
+
+  // delete blog
+  const handleDeleteBlog = () => {
+    deleteSingleTermCondition(blog?._id);
+  };
+
+  useEffect(() => {
+    toast.dismiss();
+    isSuccess && toast.success("Delete blog successfully", { id: "dSuccess" });
+    deleteError && toast.error("Delete blog failed", { id: "dFailed" });
+  }, [isSuccess, deleteError]);
+  return (
+    <CTableRow>
+      <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
+      <CTableHeaderCell scope="row">
+        <p>{new Date(blog?.createdAt).toDateString()}</p>
+      </CTableHeaderCell>
+      <CTableDataCell>
+        {<div dangerouslySetInnerHTML={{ __html: blog?.description }} />}
+      </CTableDataCell>
+      <CTableDataCell>
+        {<div dangerouslySetInnerHTML={{ __html: blog?.banglaDescription }} />}
+      </CTableDataCell>
+      <CTableDataCell>
+        <div className="">
+          <Link to={`/pages/terms/edit/${blog?._id}`}>
+            <EditButton />
+          </Link>
+          <DeleteButton setShowModal={setShowModal} />
+        </div>
+      </CTableDataCell>
+      <DeleteModal
+        deleteThis={handleDeleteBlog}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        id={blog._id}
+        deleteLoading={deleteLoading}
+      />
+    </CTableRow>
+  );
+};
+
+export default TermsConditionsTableRow;

@@ -1,0 +1,46 @@
+$font-small: 0.875rem;
+$font-medium: 1rem;
+
+.sidebar-nav {
+  font-size: $font-medium;
+}
+
+table {
+  thead tr th {
+    font-size: $font-small;
+  }
+  
+  tbody tr {
+    th {
+      font-size: $font-small;
+    }
+    td {
+      font-size: $font-small;
+    }
+  }
+}
+
+.list-group-item {
+  font-size: $font-small;
+}
+
+.form-label, label {
+  font-size: $font-small;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-item .nav-link {
+  font-size: $font-small;
+}
+
+.form-error {
+  font-size: $font-small;
+}
+
+select {
+  font-size: $font-small !important;
+}
+
+.action-btn {
+  padding: 3px 7px !important;
+}

@@ -1,0 +1,32 @@
+{
+   "upazilla": [
+   { 
+    "name": "Inside Dhaka City",
+    "id": 6
+    },
+   { 
+    "name": "Outside Dhaka",
+    "id": 7
+    },
+   { 
+    "name": "Dhamrai",
+    "id": 1
+    },
+   { 
+    "name": "Dohar",
+    "id": 2
+    },
+   { 
+    "name": "Keraniganj",
+    "id": 3
+    },
+   { 
+    "name": "Nawabganj",
+    "id": 4
+    },
+   { 
+    "name": "Savar",
+    "id": 5
+    }
+   ]
+}

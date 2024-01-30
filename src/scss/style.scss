@@ -1,0 +1,70 @@
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import CoreUI for React components library
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+@import "example";
+
+// If you want to add custom CSS you can put it here.
+@import "custom";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Brown", sans-serif;
+}
+
+@font-face {
+  font-family: "Brown";
+  src: local("Brown"),
+    url("../assets/fonts/Century-Gothic.ttf")
+      format("truetype");
+  font-weight: normal;
+}
+
+@font-face{
+  font-family:'digital-clock-font';
+  src: url("../assets/fonts/Digital-Mono-Clock.ttf");
+ }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.form-control{
+  font-size: 12px !important;
+}
+.ql-container {
+  min-height: 10rem;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ql-editor {
+  height: 100%;
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+}
+.rti--input {
+  
+  width: 100%;
+}
