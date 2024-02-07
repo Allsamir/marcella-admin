@@ -9,7 +9,7 @@ import "simplebar/dist/simplebar.min.css";
 // sidebar nav config
 import navigation from "../_nav";
 import { changeState } from "src/redux/sidebar/sidebarSlice";
-import logo from "../assets/brand/beponi-white.png";
+import logo from "../assets/brand/logo.png";
 
 const AppSidebar = () => {
   const dispatch = useDispatch();

@@ -14,7 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import logo from "src/assets/brand/beponi-white.png";
+import logo from "../assets/brand/logo.png";
 import { changeState } from "src/redux/sidebar/sidebarSlice";
 import { AppHeaderDropdown } from "./header/index";
 import { AppBreadcrumb } from "./index";

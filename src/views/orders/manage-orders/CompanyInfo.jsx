@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assets/brand/beponi-white.png";
+import logo from "../../../assets/brand/logo.png";
 import { Col, Image, Row } from "react-bootstrap";
 import { CCard, CCardBody } from "@coreui/react";
 
