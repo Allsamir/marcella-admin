@@ -18,7 +18,7 @@ const DeleteModal = ({ showModal, setShowModal, deleteThis, id, deleteLoading })
   const handleChange = (e) => {
     secret = e;
 
-    if (secret === "bdbeponi2014") {
+    if (secret === "marcella") {
       setMatched(false);
     } else {
       setMatched(true);

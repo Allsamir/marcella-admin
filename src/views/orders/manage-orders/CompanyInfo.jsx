@@ -26,10 +26,10 @@ const CompanyInfo = ({ orderData }) => {
             </p>
 
             {/* <p className="mb-0">
-              <span className="fw-bold"> Customer number:</span> bdbeponi-521312
+              <span className="fw-bold"> Customer number:</span> marcella-521312
             </p>
             <p className="mb-0">
-              <span className="fw-bold"> Invoice number:</span> bdbeponi-521312
+              <span className="fw-bold"> Invoice number:</span> marcella-521312
             </p> */}
             <p className="mb-0">
               <span className="fw-bold"> Invoice date :</span> {new Date().toLocaleDateString()}

@@ -3,7 +3,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { adminLoggedOut } from "../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "https://server.bdbeponi.com/v1",
   baseUrl: "http://localhost:8000/v1",
   prepareHeaders: async (headers, { getState, endpoint }) => {
     const token = getState()?.auth?.accessToken;
