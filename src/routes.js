@@ -174,6 +174,7 @@ const Modals = lazy(() => import("./views/notifications/modals/Modals"));
 const Toasts = lazy(() => import("./views/notifications/toasts/Toasts"));
 
 const Widgets = lazy(() => import("./views/widgets/Widgets"));
+const VendorPage = lazy(() => import("./views/vendor/index/VendorPage"));
 
 const routes = [
   { isAdmin: false, path: "/product", name: "Products", element: ManageProducts, exact: false },
@@ -877,6 +878,17 @@ const routes = [
     name: "Update flash sale offers",
     element: AddFlashSaleOffer,
   },
+
+  
+  // vendor routes 
+
+  {
+    isAdmin: false,
+    path: "/vendor",
+    name: "Vendor",
+    element: VendorPage,
+  },
+
 ];
 
 export default routes;

@@ -3,6 +3,7 @@ import {
   cilBadge,
   cilBarChart,
   cilBarcode,
+  cilCart,
   cilEnvelopeLetter,
   cilList,
   cilMoney,
@@ -290,18 +291,19 @@ const _nav = [
 
   {
     component: CNavItem,
+    name: "Vendor",
+    to: "/vendor",
+    icon: <CIcon icon={cilCart} customClassName="nav-icon" />,
+  },
+
+  {
+    component: CNavItem,
     name: "Admins",
     isAdmin: true,
     to: "/admin",
     icon: <CIcon icon={cilBadge} customClassName="nav-icon" />,
   },
 
-  // {
-  //   component: CNavItem,
-  //   name: "Mail",
-  //   to: "/mail",
-  //   icon: <CIcon icon={cilEnvelopeLetter} customClassName="nav-icon" />,
-  // },
   {
     component: CNavItem,
     name: "Settings",
