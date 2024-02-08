@@ -94,7 +94,7 @@ const LinksTab = ({
             value={flashSaleType}
             onChange={(e) => setFlashSaleType(e.target.value)}
             required
-            options={typesOptions}
+            options={[{ value: '', label: 'Select' }, ...typesOptions]}
           />
 
           {errors.offerType?.type === "required" && (
