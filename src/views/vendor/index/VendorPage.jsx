@@ -22,6 +22,7 @@ const VendorPage = () => {
                                     <CTableHeaderCell scope="col">Email</CTableHeaderCell>
                                     <CTableHeaderCell scope="col"> Status</CTableHeaderCell>
                                     <CTableHeaderCell scope="col">Date</CTableHeaderCell>
+                                    <CTableHeaderCell scope="col">Visit Shop</CTableHeaderCell>
                                     <CTableHeaderCell
                                         scope="col"
                                         style={{

@@ -3,6 +3,7 @@ import CIcon from '@coreui/icons-react';
 import { CButton, CFormSelect, CTableDataCell, CTableHeaderCell, CTableRow, CTooltip } from '@coreui/react';
 import React, { useState } from 'react';
 import { BsEye } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { useUpdateVendorStatusMutation } from 'src/redux/vendor/vendorApi';
 import DeleteModal from 'src/ui/DeleteModal';
 import UserInfoModal from 'src/ui/UserInfoModal';
@@ -11,7 +12,7 @@ import OrderFilterModal from "src/ui/orderFilterModal/OrderFilterModal";
 const VendorTable = ({ vendor, index }) => {
     const [showModal, setShowModal] = useState(false);
     const [updateVendorStatus] = useUpdateVendorStatusMutation()
-    const { _id, name, email, status, createdAt } = vendor || {};
+    const { _id, name, slug, email, status, createdAt } = vendor || {};
 
 
     const statusOptions = [
@@ -43,6 +44,15 @@ const VendorTable = ({ vendor, index }) => {
                 />
             </CTableDataCell>
             <CTableDataCell>{new Date(createdAt).toLocaleString()}</CTableDataCell>
+            <CTableDataCell>
+                <Link
+                    to={`https://marcella-ten.vercel.app/shop/${slug}`}
+                    target='_blank'
+                    style={{
+                        textAlign: 'center',
+                        display: 'block'
+                    }}>View</Link>
+            </CTableDataCell>
             <CTableDataCell>
                 <CTooltip content="View">
                     <CButton
