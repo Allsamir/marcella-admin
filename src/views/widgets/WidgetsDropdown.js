@@ -39,7 +39,7 @@ const WidgetsDropdown = ({ monthSalesData, monthOrdersData }) => {
           style={{ height: "150px" }}
           value={
             <>
-              {moneyConvert(totalOrder?.totalOrders)}
+              {moneyConvert(totalOrder?.totalOrders ? totalOrder?.totalOrders : 0)}
               {/* <span className="fs-6 fw-normal">
                 (-12.4% <CIcon icon={cilArrowBottom} />)
               </span> */}
@@ -66,7 +66,7 @@ const WidgetsDropdown = ({ monthSalesData, monthOrdersData }) => {
           className="mb-4"
           color="info"
           style={{ height: "150px" }}
-          value={<>৳{moneyConvert(totalSale?.totalSales)} </>}
+          value={<>৳ {moneyConvert(totalSale?.totalSales ? totalSale?.totalSales : 0)} </>}
           title="Total Sales"
           action={
             <CDropdown alignment="end">
@@ -90,7 +90,7 @@ const WidgetsDropdown = ({ monthSalesData, monthOrdersData }) => {
           color="warning"
           value={
             <>
-              {moneyConvert(totalUser?.totalUsers)}
+              {moneyConvert(totalUser?.totalUsers ? totalUser?.totalUsers : 0)}
               {/* <span className="fs-6 fw-normal">
                 (84.7% <CIcon icon={cilArrowTop} />)
               </span> */}
@@ -119,7 +119,7 @@ const WidgetsDropdown = ({ monthSalesData, monthOrdersData }) => {
           color="danger"
           value={
             <>
-              {moneyConvert(totalReview?.totalReviews)}
+              {moneyConvert(totalReview?.totalReviews ? totalReview?.totalReviews : 0)}
               {/* <span className="fs-6 fw-normal">
                 (-23.6% <CIcon icon={cilArrowBottom} />)
               </span> */}
