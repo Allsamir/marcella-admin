@@ -11,10 +11,21 @@ export const vendorApi = apiSlice.injectEndpoints({
             }),
             providesTags: ["vendor"],
         }),
+
+        //update vendor
+        updateVendorStatus: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/auth/seller/${id}`,
+                method: "PUT",
+                body: data
+            }),
+            invalidatesTags: ["vendor"],
+        }),
     }),
 });
 
 
 export const {
-    useGetAllSellerQuery
+    useGetAllSellerQuery,
+    useUpdateVendorStatusMutation
 } = vendorApi;

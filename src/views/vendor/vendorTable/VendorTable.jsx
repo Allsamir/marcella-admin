@@ -3,13 +3,14 @@ import CIcon from '@coreui/icons-react';
 import { CButton, CFormSelect, CTableDataCell, CTableHeaderCell, CTableRow, CTooltip } from '@coreui/react';
 import React, { useState } from 'react';
 import { BsEye } from 'react-icons/bs';
+import { useUpdateVendorStatusMutation } from 'src/redux/vendor/vendorApi';
 import DeleteModal from 'src/ui/DeleteModal';
 import UserInfoModal from 'src/ui/UserInfoModal';
 import OrderFilterModal from "src/ui/orderFilterModal/OrderFilterModal";
 
 const VendorTable = ({ vendor, index }) => {
     const [showModal, setShowModal] = useState(false);
-    const [selectedValue, setSelectedValue] = useState();
+    const [updateVendorStatus] = useUpdateVendorStatusMutation()
     const { _id, name, email, status, createdAt } = vendor || {};
 
 
@@ -19,11 +20,9 @@ const VendorTable = ({ vendor, index }) => {
     ];
 
     const handleUpdate = (value, id) => {
-        setSelectedValue(value);
         const data = { status: value };
-        console.log(data)
+        updateVendorStatus({ id, data });
     }
-    console.log('selected value', selectedValue)
     return (
         <CTableRow>
             <OrderFilterModal />
@@ -39,7 +38,7 @@ const VendorTable = ({ vendor, index }) => {
                         color: status === 'active' ? 'white' : "black"
                     }}
                     options={statusOptions}
-                    value={selectedValue}
+                    value={status}
                     onChange={(e) => handleUpdate(e.target.value, _id)}
                 />
             </CTableDataCell>
