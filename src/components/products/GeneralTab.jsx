@@ -108,8 +108,8 @@ const GeneralTabl = ({
           <label className="mb-2">
             Tags <span className="text-danger">*</span>
           </label>
-          <TagsInput required value={productTags} onChange={setProductTags} name="tags" />
-          <div className="text-muted">Press enter to add new tag</div>
+          <TagsInput separators={","} required value={productTags} onChange={setProductTags} name="tags" />
+          <div className="text-muted">Press commas , to add new tag</div>
         </CCol>
       )}
 
