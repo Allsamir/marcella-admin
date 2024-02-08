@@ -20,6 +20,11 @@ const productTypeOptions = [
   { value: "popular-products", label: "Popular Products" },
   { value: "new-arrivals", label: "New Arrivals" },
   { value: "featured-products", label: "Featured Products" },
+  { value: "mens-fashion", label: "Men's Fashion" },
+  { value: "Womens-fashion", label: "Women's Fashion" },
+  { value: "mobile-and-gadgets", label: "Mobile And Gadgets" },
+  { value: "home-appliance", label: "Home Appliance" },
+  { value: "computing-and-gaming", label: "Computing And Gaming" },
 ];
 const LinksTab = ({
   flashSale,
