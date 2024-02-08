@@ -2,8 +2,11 @@ import { CCard, CCardBody, CCol, CRow, CTable, CTableBody, CTableHead, CTableHea
 import React from 'react';
 import CardHeaderButton from 'src/ui/CardHeaderButton';
 import VendorTable from '../vendorTable/VendorTable';
+import { useGetAllSellerQuery } from 'src/redux/vendor/vendorApi';
 
 const VendorPage = () => {
+    const { data: allVendors } = useGetAllSellerQuery();
+    console.log('vender seller', allVendors?.data)
     return (
         <CRow>
             <CCol xs={12}>
@@ -31,7 +34,15 @@ const VendorPage = () => {
                                 </CTableRow>
                             </CTableHead>
                             <CTableBody>
-                                <VendorTable />
+                                {
+                                    allVendors?.data?.map((vendor, idx) =>
+                                        <VendorTable
+                                            key={vendor?._id}
+                                            vendor={vendor}
+                                            index={idx}
+                                        />
+                                    )
+                                }
                             </CTableBody>
                         </CTable>
                         {/* <PaginationButton
