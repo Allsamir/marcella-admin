@@ -1,12 +1,9 @@
-import { cilTrash } from '@coreui/icons';
-import CIcon from '@coreui/icons-react';
 import { CButton, CFormSelect, CTableDataCell, CTableHeaderCell, CTableRow, CTooltip } from '@coreui/react';
 import React, { useState } from 'react';
 import { BsEye } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useUpdateVendorStatusMutation } from 'src/redux/vendor/vendorApi';
-import DeleteModal from 'src/ui/DeleteModal';
-import UserInfoModal from 'src/ui/UserInfoModal';
+import SellerInfoModal from 'src/ui/SellerInfoModal';
 import OrderFilterModal from "src/ui/orderFilterModal/OrderFilterModal";
 
 const VendorTable = ({ vendor, index }) => {
@@ -33,7 +30,6 @@ const VendorTable = ({ vendor, index }) => {
             <CTableDataCell>
                 <CFormSelect
                     aria-label="Order Status"
-                    // className={`form-control  ${report?.status === "rejected" && "text-danger"} ${report?.status === "accepted" && "text-success"}`}
                     style={{
                         backgroundColor: status === 'active' ? 'green' : "#f9f9f9",
                         color: status === 'active' ? 'white' : "black"
@@ -53,41 +49,23 @@ const VendorTable = ({ vendor, index }) => {
                         display: 'block'
                     }}>View</Link>
             </CTableDataCell>
-            <CTableDataCell>
+            <CTableDataCell className="d-flex justify-content-center">
                 <CTooltip content="View">
                     <CButton
-                        // onClick={() => handleViewOrder(report?.orderId)}
                         className="mb-1  ms-2"
                         style={{ height: "30px", width: "32px", position: "relative" }}
                         color="info"
                         variant="outline"
+                        onClick={() => setShowModal(true)}
                     >
                         <BsEye style={{ position: "absolute", top: "25%", left: "25%" }} />
                     </CButton>
                 </CTooltip>
-                <CTooltip content="Delete">
-                    <CButton
-                        color="danger"
-                        variant="outline"
-                        style={{ height: "30px", width: "32px", position: "relative" }}
-                        className="ms-2"
-                        onClick={() => setShowModal(true)}
-                    >
-                        <CIcon icon={cilTrash} style={{ position: "absolute", top: "25%", left: "25%" }} />
-                    </CButton>
-                </CTooltip>
             </CTableDataCell>
-            <DeleteModal
-                // deleteThis={deleteSingleReport}
+            <SellerInfoModal
                 showModal={showModal}
                 setShowModal={setShowModal}
-            // id={report?._id}
-            // deleteLoading={isLoading}
-            />
-            <UserInfoModal
-            // showModal={showUserInfoModal}
-            // setShowModal={setShowUsrInfoModal}
-            // user={report?.user}
+                vendor={vendor}
             />
         </CTableRow>
     );
