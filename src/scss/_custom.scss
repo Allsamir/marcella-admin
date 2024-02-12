@@ -5,6 +5,10 @@ $font-medium: 1rem;
   font-size: $font-medium;
 }
 
+.sidebar-nav::-webkit-scrollbar{
+  display: none;
+}
+
 table {
   thead tr th {
     font-size: $font-small;
