@@ -3,6 +3,7 @@ import { cilSave } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CForm, CFormInput } from "@coreui/react";
 import { useEffect, useState } from "react";
+import { Image } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,14 +15,17 @@ import {
 
 import CancelButton from "src/ui/button/CancelButton";
 import HeaderBackButton from "src/ui/button/HeaderBackButton";
+import ImageLabel from "src/ui/ImageLabel";
 import Loading from "src/ui/Loading";
 
 const AddFlashSaleTypes = () => {
   const [sizeInput, setSizeInput] = useState("");
   const [haveId, setHaveId] = useState(true);
   const { id } = useParams();
-  const { handleSubmit } = useForm();
+  const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
+  const [imagePreview, setImagePreview] = useState(null);
+  const [error, setError] = useState(null);
 
   const {
     data: size,
@@ -41,15 +45,18 @@ const AddFlashSaleTypes = () => {
   ] = useUpdateSingleTypesMutation();
 
   // update or add new term conditions
-  const onSubmit = () => {
-    if (id) {
-      const data = {
-        name: sizeInput,
-      };
-      updateSingleType({ id, data });
-    } else {
-      addSingleType({ name: sizeInput });
+  const onSubmit = (data) => {
+    const image = data?.image[0];
+    const newData = {
+      name: sizeInput,
+      image
     }
+    if (id) {
+      updateSingleType({ id, newData });
+    } else {
+      addSingleType(newData);
+    }
+    console.log(newData)
   };
 
   //default data set
@@ -75,6 +82,19 @@ const AddFlashSaleTypes = () => {
     }
   }, [id]);
 
+
+  function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file.size > 2 * 1024 * 1024) {
+      setError("File size should be less than 2MB");
+      setImagePreview(null);
+    } else {
+      setImagePreview(URL.createObjectURL(file));
+      setError(null);
+    }
+  }
+
+
   return (
     <CForm onSubmit={handleSubmit(onSubmit)}>
       <CCard>
@@ -94,6 +114,50 @@ const AddFlashSaleTypes = () => {
                 value={sizeInput}
                 onChange={(e) => setSizeInput(e.target.value)}
               />
+            </CCol>
+            <CCol xs={12}>
+              <label>Flash Image</label>
+              <ImageLabel sizes={'bannerSize'} />
+              <CFormInput
+                type="file"
+                id="file-upload"
+                accept=".jpg, .png, .jpeg, .gif"
+                aria-describedby="file-upload"
+                style={{
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "transparent",
+                  color: "transparent",
+                  width: "0.1px",
+                  height: "0.1px",
+                  overflow: "hidden",
+                  position: "absolute",
+                  zIndex: "-1",
+                }}
+                {...register("image", {
+                  required: {
+                    value: 'bannerData' ? false : true,
+                    // value: false,
+                    message: "Image is required",
+                  },
+                })}
+                onChange={(e) => handleFileChange(e)}
+              />
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              {imagePreview && (
+                <Image
+                  fluid
+                  className="my-2"
+                  height={300}
+                  src={imagePreview}
+                  alt="Preview Image"
+                />
+              )}
+
+              <br />
+              {'bannerData?.image' && (
+                <Image fluid className="my-2" height={300} src={'bannerData?.image'} />
+              )}
             </CCol>
             <div className="text-end  ">
               <CancelButton />
