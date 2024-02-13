@@ -215,145 +215,9 @@ const AddBannerParent = ({
                   )}
                 </CCol>
 
+                {/* if need then putting the comment code below */}
 
-                {desktopBanner && (
-                  <CCol className="mt-2" xs={12}>
-                    <label className="mb-2">
-                      Banner Color <span className="text-danger">*</span>
-                    </label>
-                    <SketchPicker
-                      width="350px"
-                      color={color}
-                      onChangeComplete={handleChangeComplete}
 
-                    />
-                    <p className="mt-2" style={{ color: `${color}` }}>
-                      Selected color: {color}
-                    </p>
-                  </CCol>
-                )}
-                <CCol className="mb-4" xs={12}>
-                  <label className="w-100 mt-2">
-                    Select Filed To Make Dynamic Link <span className="text-danger">*</span>
-                  </label>
-                  <Form.Check
-                    inline
-                    label="Category"
-                    name="group1"
-                    value={"category"}
-                    type={"radio"}
-                    onClick={() => setSelectedFiled("category")}
-                    checked={selectedField === "category"}
-                    id={`inline-1`}
-                    {...register("related", {})}
-                  />
-                  <Form.Check
-                    inline
-                    label="Products"
-                    name="group1"
-                    value={"product"}
-                    onClick={() => setSelectedFiled("product")}
-                    checked={selectedField === "product"}
-                    type={"radio"}
-                    id={`inline-2`}
-                    {...register("related", {})}
-                  />
-                </CCol>
-                <CCol xs={12}>
-                  {selectedField === "category" && (
-                    <div>
-                      <label>Category </label>
-                      <Controller
-                        control={control}
-                        name={"categories"}
-                        rules={{
-                          required: bannerData ? false : true,
-                        }}
-                        render={({ field: { onChange, value, name, ref } }) => (
-                          <Select
-                            className="mt-2"
-                            defaultValue={getDefaultData(bannerData?.categories)}
-                            inputRef={ref}
-                            options={modifiedCategories}
-                            value={modifiedCategories?.find((option) => option.value === value)}
-                            onChange={(selectedOptions) => {
-                              onChange(selectedOptions);
-                              handleCategoryChange(selectedOptions.value._id);
-                            }}
-                          />
-                        )}
-                      />
-                    </div>
-                  )}
-                  {selectedField === "category" && (
-                    <>
-                      <label>Sub Category</label>
-
-                      <Controller
-                        control={control}
-                        name={"subCategories"}
-                        // rules={{
-                        //   required: bannerData ? false : true,
-                        // }}
-                        render={({ field: { onChange, value, name, ref } }) => (
-                          <Select
-                            className="mt-2"
-                            defaultValue={getDefaultData(bannerData?.subCategories)}
-                            inputRef={ref}
-                            isDisabled={!selectedCategory}
-                            options={modifiedSubCategories}
-                            value={modifiedSubCategories?.find((option) => option.value === value)}
-                            onChange={(selectedOptions) => {
-                              onChange(selectedOptions);
-                              handleSubCategoryChange(selectedOptions.value._id);
-                            }}
-                          />
-                        )}
-                      />
-                    </>
-                  )}
-                  {selectedField === "category" && (
-                    <>
-                      <label>Sub Category Children</label>
-
-                      <Controller
-                        control={control}
-                        name={"subCategoryChildren"}
-                        // rules={{
-                        //   required: bannerData ? false : true,
-                        // }}
-                        render={({ field: { onChange, value, name, ref } }) => (
-                          <Select
-                            className="mt-2"
-                            defaultValue={getDefaultData(bannerData?.subCategoryChildren)}
-                            inputRef={ref}
-                            isDisabled={!selectedSubCategory}
-                            options={modifiedSubCategoryChildren}
-                            value={modifiedSubCategoryChildren?.find(
-                              (option) => option.value === value,
-                            )}
-                            onChange={(selectedOptions) => {
-                              onChange(selectedOptions);
-                            }}
-                          />
-                        )}
-                      />
-                    </>
-                  )}
-                  {selectedField === "product" && (
-                    <>
-                      <label className="mb-2">
-                        Product URL Slug <span className="text-danger">*</span>
-                      </label>
-                      <CFormInput
-                        placeholder="Enter product url slug"
-                        defaultValue={bannerData?.product}
-                        type="text"
-                        {...register("product", {})}
-                      />
-                    </>
-                  )}
-                </CCol>
               </CRow>
               <div className="text-end">
                 <CancelButton />
@@ -381,3 +245,160 @@ const AddBannerParent = ({
 };
 
 export default AddBannerParent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// {desktopBanner && (
+//   <CCol className="mt-2" xs={12}>
+//     <label className="mb-2">
+//       Banner Color <span className="text-danger">*</span>
+//     </label>
+//     <SketchPicker
+//       width="350px"
+//       color={color}
+//       onChangeComplete={handleChangeComplete}
+
+//     />
+//     <p className="mt-2" style={{ color: `${color}` }}>
+//       Selected color: {color}
+//     </p>
+//   </CCol>
+// )}
+// <CCol className="mb-4" xs={12}>
+//   <label className="w-100 mt-2">
+//     Select Filed To Make Dynamic Link <span className="text-danger">*</span>
+//   </label>
+//   <Form.Check
+//     inline
+//     label="Category"
+//     name="group1"
+//     value={"category"}
+//     type={"radio"}
+//     onClick={() => setSelectedFiled("category")}
+//     checked={selectedField === "category"}
+//     id={`inline-1`}
+//     {...register("related", {})}
+//   />
+//   <Form.Check
+//     inline
+//     label="Products"
+//     name="group1"
+//     value={"product"}
+//     onClick={() => setSelectedFiled("product")}
+//     checked={selectedField === "product"}
+//     type={"radio"}
+//     id={`inline-2`}
+//     {...register("related", {})}
+//   />
+// </CCol>
+// <CCol xs={12}>
+//   {selectedField === "category" && (
+//     <div>
+//       <label>Category </label>
+//       <Controller
+//         control={control}
+//         name={"categories"}
+//         rules={{
+//           required: bannerData ? false : true,
+//         }}
+//         render={({ field: { onChange, value, name, ref } }) => (
+//           <Select
+//             className="mt-2"
+//             defaultValue={getDefaultData(bannerData?.categories)}
+//             inputRef={ref}
+//             options={modifiedCategories}
+//             value={modifiedCategories?.find((option) => option.value === value)}
+//             onChange={(selectedOptions) => {
+//               onChange(selectedOptions);
+//               handleCategoryChange(selectedOptions.value._id);
+//             }}
+//           />
+//         )}
+//       />
+//     </div>
+//   )}
+//   {selectedField === "category" && (
+//     <>
+//       <label>Sub Category</label>
+
+//       <Controller
+//         control={control}
+//         name={"subCategories"}
+//         // rules={{
+//         //   required: bannerData ? false : true,
+//         // }}
+//         render={({ field: { onChange, value, name, ref } }) => (
+//           <Select
+//             className="mt-2"
+//             defaultValue={getDefaultData(bannerData?.subCategories)}
+//             inputRef={ref}
+//             isDisabled={!selectedCategory}
+//             options={modifiedSubCategories}
+//             value={modifiedSubCategories?.find((option) => option.value === value)}
+//             onChange={(selectedOptions) => {
+//               onChange(selectedOptions);
+//               handleSubCategoryChange(selectedOptions.value._id);
+//             }}
+//           />
+//         )}
+//       />
+//     </>
+//   )}
+//   {selectedField === "category" && (
+//     <>
+//       <label>Sub Category Children</label>
+
+//       <Controller
+//         control={control}
+//         name={"subCategoryChildren"}
+//         // rules={{
+//         //   required: bannerData ? false : true,
+//         // }}
+//         render={({ field: { onChange, value, name, ref } }) => (
+//           <Select
+//             className="mt-2"
+//             defaultValue={getDefaultData(bannerData?.subCategoryChildren)}
+//             inputRef={ref}
+//             isDisabled={!selectedSubCategory}
+//             options={modifiedSubCategoryChildren}
+//             value={modifiedSubCategoryChildren?.find(
+//               (option) => option.value === value,
+//             )}
+//             onChange={(selectedOptions) => {
+//               onChange(selectedOptions);
+//             }}
+//           />
+//         )}
+//       />
+//     </>
+//   )}
+//   {selectedField === "product" && (
+//     <>
+//       <label className="mb-2">
+//         Product URL Slug <span className="text-danger">*</span>
+//       </label>
+//       <CFormInput
+//         placeholder="Enter product url slug"
+//         defaultValue={bannerData?.product}
+//         type="text"
+//         {...register("product", {})}
+//       />
+//     </>
+//   )}
+// </CCol>
