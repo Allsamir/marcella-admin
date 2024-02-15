@@ -74,6 +74,7 @@ const OfferTableRowData = ({ offer, index }) => {
     <CTableRow>
       <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
       <CTableDataCell>{offer?.name}</CTableDataCell>
+      <CTableDataCell style={{ backgroundColor: offer?.color }}>{offer?.color}</CTableDataCell>
       <CTableDataCell>
         {offer?.timeStamps && offer?.status === "active" ? (
           <Countdown date={offer?.timeStamps} renderer={renderer}>

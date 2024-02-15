@@ -58,6 +58,15 @@ const ManageFlashSaleOffer = () => {
                   minWidth: "150px",
                 }}
               >
+                Color
+              </CTableHeaderCell>
+              <CTableHeaderCell
+                scope="col"
+                style={{
+                  width: "150px",
+                  minWidth: "150px",
+                }}
+              >
                 timer
               </CTableHeaderCell>
               <CTableHeaderCell

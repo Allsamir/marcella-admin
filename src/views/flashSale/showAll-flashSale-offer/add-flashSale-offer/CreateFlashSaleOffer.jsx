@@ -20,6 +20,8 @@ const CreateFlashSaleOffer = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const navigate = useNavigate();
+  const [color, setColor] = useState("#FFFFFF");
+
 
   const {
     data: offer,
@@ -55,6 +57,7 @@ const CreateFlashSaleOffer = () => {
       timeStamps: timeStamps || defaultData?.timeStamps,
       offerType: data.offerType || defaultData?.offerType,
       status: "active",
+      color: color
     };
 
 
@@ -63,6 +66,8 @@ const CreateFlashSaleOffer = () => {
     } else {
       addFlashSaleOffer(modifyData);
     }
+
+    console.log(modifyData)
   };
 
   useEffect(() => {
@@ -97,6 +102,8 @@ const CreateFlashSaleOffer = () => {
             setStartDate={setStartDate}
             endDate={endDate}
             setEndDate={setEndDate}
+            color={color}
+            setColor={setColor}
           />
         </CCardBody>
       )}

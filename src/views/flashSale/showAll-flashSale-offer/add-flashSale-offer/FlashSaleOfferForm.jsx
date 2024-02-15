@@ -2,6 +2,7 @@ import { cilSave } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { CButton, CCol, CForm, CFormInput, CRow } from "@coreui/react";
 import { useEffect, useState } from "react";
+import { SketchPicker } from "react-color";
 import { Controller, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
@@ -16,6 +17,8 @@ const FlashSaleOfferForm = ({
   startDate,
   setStartDate,
   endDate,
+  color,
+  setColor,
   setEndDate,
 }) => {
   const { id } = useParams();
@@ -36,6 +39,10 @@ const FlashSaleOfferForm = ({
     }
   }, [data, setValue]);
 
+
+  const handleChangeComplete = (newColor) => {
+    setColor(newColor.hex);
+  };
   return (
     <CForm onSubmit={handleSubmit(onSubmit)}>
       <CCol xs={12}>
@@ -122,6 +129,21 @@ const FlashSaleOfferForm = ({
             <p className="text-danger">{"End date is required"}</p>
           )}
         </CCol>
+        <CCol className="mt-2" xs={12}>
+          <label className="mb-2">
+            Background Color <span className="text-danger">*</span>
+          </label>
+          <SketchPicker
+            width="350px"
+            color={color}
+            onChangeComplete={handleChangeComplete}
+
+          />
+          <p className="mt-2" style={{ color: `${color}` }}>
+            Selected color: {color}
+          </p>
+        </CCol>
+
       </CRow>
 
       <div className="text-end  ">
