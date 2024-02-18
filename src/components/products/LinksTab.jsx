@@ -16,10 +16,10 @@ const statusOptions = [
 ];
 
 const productTypeOptions = [
-  { value: "regular-products", label: "Regular products" },
+  // { value: "regular-products", label: "Regular products" },
+  // { value: "new-arrivals", label: "New Arrivals" },
+  // { value: "featured-products", label: "Featured Products" },
   { value: "popular-products", label: "Popular Products" },
-  { value: "new-arrivals", label: "New Arrivals" },
-  { value: "featured-products", label: "Featured Products" },
   { value: "mens-fashion", label: "Men's Fashion" },
   { value: "Womens-fashion", label: "Women's Fashion" },
   { value: "mobile-and-gadgets", label: "Mobile And Gadgets" },
