@@ -32,7 +32,7 @@ import { getModels } from "src/utils/getReactQuilModel";
 const orderStatusOptions = [
   { value: "pending", label: "Pending" },
   { value: "processing", label: "Processing" },
-  { value: "Picked by Courier", label: "Picked by Courier" },
+  { value: "shipped", label: "shipped" },
   { value: "cancelled", label: "Cancelled" },
   { value: "returned", label: "Returned" },
   { value: "delivered", label: "Delivered" },

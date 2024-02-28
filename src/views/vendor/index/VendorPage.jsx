@@ -6,7 +6,7 @@ import { useGetAllSellerQuery } from 'src/redux/vendor/vendorApi';
 
 const VendorPage = () => {
     const { data: allVendors } = useGetAllSellerQuery();
-    console.log('vender seller', allVendors?.data)
+    
     return (
         <CRow>
             <CCol xs={12}>

@@ -23,7 +23,7 @@ const TableRowData = ({ index, order, handleDeleteOrder, deleteLoading }) => {
   const orderStatus = [
     { value: "pending", label: "Pending" },
     { value: "processing", label: "Processing" },
-    { value: "picked by courier", label: "Picked by Courier" },
+    { value: "shipped", label: "shipped" },
     { value: "cancelled", label: "Cancelled" },
     { value: "returned", label: "Returned" },
     { value: "delivered", label: "Delivered" },

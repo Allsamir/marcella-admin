@@ -10,7 +10,7 @@ const orderStatusOptions = [
   "Open this select menu",
   { label: "Pending", value: "1" },
   { label: "Processing", value: "2" },
-  { label: "Picked by Courier", value: "3" },
+  { label: "shipped", value: "3" },
   { label: "Delivered", value: "4" },
   { label: "Cancelled", value: "5" },
   { label: "Returned", value: "6" },

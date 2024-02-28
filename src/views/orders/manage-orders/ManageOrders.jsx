@@ -23,7 +23,7 @@ const ManageOrders = () => {
   const statusGroup = [
     "Pending",
     "Processing",
-    "Picked by Courier",
+    "shipped",
     "Delivered",
     "Returned",
     "Cancelled",
