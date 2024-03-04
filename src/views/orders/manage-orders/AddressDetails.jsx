@@ -57,7 +57,7 @@ const AddressDetails = ({ orderData }) => {
                     style={{ width: "1.28571429em", lineHeight: "1.5rem" }}
                   />
                 </div>
-                BD Beponi
+                Marcella
               </div>
               <div className="px-4  d-flex align-items-center pb-1">
                 <div className=" d-flex justify-content-center align-items-center  me-1 rounded-small icon_parent">

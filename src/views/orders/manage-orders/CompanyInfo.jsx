@@ -6,7 +6,7 @@ import { CCard, CCardBody } from "@coreui/react";
 const CompanyInfo = ({ orderData }) => {
   return (
     <CCard className="">
-      {/* <h1 style={{ fontWeight: "bold", color: "#0B0B0B" }}>Bd Beponi</h1> */}
+      {/* <h1 style={{ fontWeight: "bold", color: "#0B0B0B" }}>Marcella</h1> */}
       <CCardBody className="p-o" style={{ paddingBottom: "0px" }}>
         <Row className="pb-0">
           <div className="d-flex justify-content-between">
