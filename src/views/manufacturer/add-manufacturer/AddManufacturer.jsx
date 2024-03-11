@@ -28,14 +28,19 @@ const AddManufacturer = () => {
   }, [id]);
 
   const handleCreateManufacturer = (data) => {
-    const modifyData = {};
-    if (data.name) modifyData.name = data.name;
-    if (data.description) modifyData.description = data.description;
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+
+    if (data.name) formData.append("name", JSON.stringify(data.name));
+    if (data.description) formData.append("description", JSON.stringify(data.description));
+
     if (id) {
-      updateManufacture({ id, data: modifyData });
+      updateManufacture({ id, data: formData });
     } else {
-      addManufacturer(modifyData);
+      addManufacturer(formData);
     }
+    console.log(data?.image?.[0])
   };
 
   const navigate = useNavigate();

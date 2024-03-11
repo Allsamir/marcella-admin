@@ -5,19 +5,22 @@ $font-medium: 1rem;
   font-size: $font-medium;
 }
 
-.sidebar-nav::-webkit-scrollbar{
-  display: none;
+
+.sidebar-nav {
+  scrollbar-width: thin;
 }
+
 
 table {
   thead tr th {
     font-size: $font-small;
   }
-  
+
   tbody tr {
     th {
       font-size: $font-small;
     }
+
     td {
       font-size: $font-small;
     }
@@ -28,7 +31,8 @@ table {
   font-size: $font-small;
 }
 
-.form-label, label {
+.form-label,
+label {
   font-size: $font-small;
   font-weight: 600;
 }

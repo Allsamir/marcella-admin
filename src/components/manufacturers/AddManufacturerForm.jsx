@@ -40,6 +40,14 @@ const AddManufacturerForm = (props) => {
             {...register("description", { required: props?.data ? false : true })}
           ></CFormTextarea>
         </CCol>
+        <CCol xs={12}>
+          <CFormInput
+            type="file"
+            id="manufacturerImageInputField"
+            label="Image"
+            {...register("image")}
+          />
+        </CCol>
       </CRow>
       <div className="text-end">
         <CancelButton />
