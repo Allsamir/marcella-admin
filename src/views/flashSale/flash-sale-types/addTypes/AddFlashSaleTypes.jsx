@@ -46,17 +46,21 @@ const AddFlashSaleTypes = () => {
 
   // update or add new term conditions
   const onSubmit = (data) => {
-    const image = data?.image[0];
-    const newData = {
-      name: sizeInput,
-      image
-    }
+    const image = data.image[0];
+    const formData = new FormData();
+    if (sizeInput) formData.append("name", sizeInput);
+    if (image) formData.append("image", image);
+    // const image = data?.image[0];
+    // const newData = {
+    //   name: sizeInput,
+    //   image
+    // }
     if (id) {
-      updateSingleType({ id, newData });
+      updateSingleType({ id, formData });
     } else {
-      addSingleType(newData);
+      addSingleType(formData);
     }
-    console.log(newData)
+    console.log(data.image[0])
   };
 
   //default data set
@@ -134,13 +138,7 @@ const AddFlashSaleTypes = () => {
                   position: "absolute",
                   zIndex: "-1",
                 }}
-                {...register("image", {
-                  required: {
-                    value: 'bannerData' ? false : true,
-                    // value: false,
-                    message: "Image is required",
-                  },
-                })}
+                {...register("image")}
                 onChange={(e) => handleFileChange(e)}
               />
               {error && <p style={{ color: "red" }}>{error}</p>}

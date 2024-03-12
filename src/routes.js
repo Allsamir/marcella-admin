@@ -175,6 +175,7 @@ const Toasts = lazy(() => import("./views/notifications/toasts/Toasts"));
 
 const Widgets = lazy(() => import("./views/widgets/Widgets"));
 const VendorPage = lazy(() => import("./views/vendor/index/VendorPage"));
+const OrderOverviewPage = lazy(() => import("./views/orders/order-overview/index"));
 
 const routes = [
   { isAdmin: false, path: "/product", name: "Products", element: ManageProducts, exact: false },
@@ -336,6 +337,14 @@ const routes = [
     path: "/order/details/:id",
     name: "Order details",
     element: ViewOrderDetails,
+  },
+
+  //order overview
+  {
+    isAdmin: false,
+    path: "/order-overview",
+    name: "Order Overview",
+    element: OrderOverviewPage,
   },
 
   // report routes
@@ -879,7 +888,7 @@ const routes = [
     element: AddFlashSaleOffer,
   },
 
-  
+
   // vendor routes 
 
   {

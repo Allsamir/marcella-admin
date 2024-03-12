@@ -106,7 +106,10 @@ const _nav = [
     name: "Orders",
     isAdmin: false,
     icon: <BsCartPlus className="nav-icon" />,
-    items: [{ component: CNavItem, name: "All Orders", to: "/order" }],
+    items: [
+      { component: CNavItem, name: "All Orders", to: "/order" },
+      { component: CNavItem, name: "Orders Overview", to: "/order-overview" }
+    ],
   },
   {
     component: CNavGroup,
