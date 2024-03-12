@@ -1,19 +1,21 @@
-import { CButton, CFormSelect, CTableDataCell, CTableHeaderCell, CTableRow, CTooltip } from '@coreui/react';
+import { CButton, CTableDataCell, CTableRow, CTooltip } from '@coreui/react';
 import React, { useState } from 'react';
 import { MdPayment } from 'react-icons/md';
-import { useUpdateVendorStatusMutation } from 'src/redux/vendor/vendorApi';
-import SellerInfoModal from 'src/ui/SellerInfoModal';
 import OrderFilterModal from "src/ui/orderFilterModal/OrderFilterModal";
+import PaymentModalInfo from './PaymentModalInfo';
 
 const OrderOverviewTable = ({ order, index }) => {
     const [showModal, setShowModal] = useState(false);
-    const [updateVendorStatus] = useUpdateVendorStatusMutation()
-    const { _id, orderId, status, createdAt } = order || {};
+    const [vendorId, setVendorId] = useState(null);
+    const { orderId, status, createdAt } = order || {};
 
-    // const handleUpdate = (value, id) => {
-    //     const data = { status: value };
-    //     updateVendorStatus({ id, data });
-    // }
+
+
+    const handelOpenModal = (id) => {
+        setVendorId(id)
+        setShowModal(true)
+    }
+
     return (
 
         <>
@@ -41,16 +43,18 @@ const OrderOverviewTable = ({ order, index }) => {
                                     style={{ height: "30px", width: "32px", position: "relative" }}
                                     color="info"
                                     variant="outline"
-                                    onClick={() => setShowModal(true)}
+                                    disabled={product?.paymentStatus === 'paid'}
+                                    onClick={() => handelOpenModal(product?.product?.sellerId)}
                                 >
                                     <MdPayment style={{ position: "absolute", top: "25%", left: "25%" }} />
                                 </CButton>
                             </CTooltip>
                         </CTableDataCell>
-                        <SellerInfoModal
+                        <PaymentModalInfo
                             showModal={showModal}
                             setShowModal={setShowModal}
                             product={product}
+                            sellerId={vendorId}
                             order={order}
                         />
                     </CTableRow>

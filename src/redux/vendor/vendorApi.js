@@ -12,6 +12,15 @@ export const vendorApi = apiSlice.injectEndpoints({
             providesTags: ["vendor"],
         }),
 
+        //get single vendor by id
+        getSingleSeller: builder.query({
+            query: (id) => ({
+                url: `/auth/client-seller/${id}`,
+                method: "POST",
+            }),
+            providesTags: ["vendor"],
+        }),
+
         //update vendor
         updateVendorStatus: builder.mutation({
             query: ({ id, data }) => ({
@@ -27,5 +36,6 @@ export const vendorApi = apiSlice.injectEndpoints({
 
 export const {
     useGetAllSellerQuery,
+    useGetSingleSellerQuery,
     useUpdateVendorStatusMutation
 } = vendorApi;

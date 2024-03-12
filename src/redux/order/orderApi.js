@@ -133,6 +133,17 @@ export const orderApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["AllOrder", "AllFilterOrder"],
     }),
+
+
+    // delete order by id
+    updatePaymentOrder: builder.mutation({
+      query: ({ orderId, productId, data }) => ({
+        url: `/order/${orderId}/products/${productId}/transaction`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["AllOrder", "AllFilterOrder"],
+    }),
   }),
 });
 
@@ -152,4 +163,5 @@ export const {
   useGetTotalSalesByDateMutation,
   useGetTotalOrdersQuery,
   useGetTotalOrdersByYearQuery,
+  useUpdatePaymentOrderMutation
 } = orderApi;
