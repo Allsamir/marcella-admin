@@ -32,8 +32,8 @@ const AddManufacturer = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    if (data.name) formData.append("name", JSON.stringify(data.name));
-    if (data.description) formData.append("description", JSON.stringify(data.description));
+    if (data.name) formData.append("name", data.name);
+    if (data.description) formData.append("description", data.description);
 
     if (id) {
       updateManufacture({ id, data: formData });

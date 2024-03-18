@@ -155,7 +155,7 @@ const PaymentModalInfo = ({ showModal, setShowModal, order, product, sellerId })
                         </CCard>
                     </CCol>
 
-                    <CTable align="middle" className="mb-0 border mt-5" bordered hover responsive>
+                    {/* <CTable align="middle" className="mb-0 border mt-5" bordered hover responsive>
                         <CTableHead color="light">
                             <CTableRow className="text-start">
                                 <CTableHeaderCell scope="col">Date</CTableHeaderCell>
@@ -169,7 +169,6 @@ const PaymentModalInfo = ({ showModal, setShowModal, order, product, sellerId })
                         </CTableHead>
                         <CTableBody>
                             <CTableRow>
-                                {/* <OrderFilterModal /> */}
                                 <CTableDataCell>{new Date(createdAt).toLocaleDateString()}</CTableDataCell>
                                 <CTableDataCell>{order?.orderId}</CTableDataCell>
                                 <CTableDataCell>{product?.product?.name}</CTableDataCell>
@@ -184,16 +183,16 @@ const PaymentModalInfo = ({ showModal, setShowModal, order, product, sellerId })
                                 >{product?.paymentStatus}</CTableDataCell>
                             </CTableRow>
                         </CTableBody>
-                    </CTable>
+                    </CTable> */}
 
                     <div className="d-flex mt-5 gap-5">
                         <div className="w-50">
-                            <label htmlFor="" style={{ display: 'block' }}>Transaction Number</label>
-                            <input type="text" onChange={(e) => setTransactionNumber(e.target.value)} className="w-100 mt-2 p-2 border-1 border-dark rounded" placeholder="Transaction Number" style={{ outline: 'none' }} />
+                            <label htmlFor="" style={{ display: 'block' }}>Transaction Number <span className="text-danger">*</span> </label>
+                            <input type="text" required onChange={(e) => setTransactionNumber(e.target.value)} className="w-100 mt-2 p-2 border-1 border-dark rounded" placeholder="Transaction Number" style={{ outline: 'none' }} />
                         </div>
                         <div className="w-50">
-                            <label htmlFor="" style={{ display: 'block' }}>Transaction Type</label>
-                            <input type="text" onChange={(e) => setTransactionType(e.target.value)} className="w-100 mt-2 p-2 border-1 border-dark rounded" placeholder="Transaction Type" style={{ outline: 'none' }} />
+                            <label htmlFor="" style={{ display: 'block' }}>Transaction Type <span className="text-danger">*</span> </label>
+                            <input type="text" required onChange={(e) => setTransactionType(e.target.value)} className="w-100 mt-2 p-2 border-1 border-dark rounded" placeholder="Transaction Type" style={{ outline: 'none' }} />
                         </div>
                     </div>
 
@@ -202,7 +201,7 @@ const PaymentModalInfo = ({ showModal, setShowModal, order, product, sellerId })
                     <CButton color="secondary" onClick={() => setShowModal(false)}>
                         Cancel
                     </CButton>
-                    <CButton onClick={handleConfirmModalOpen} color="primary">
+                    <CButton disabled={!transactionNumber && !transactionType} onClick={handleConfirmModalOpen} color="primary">
                         Payment
                     </CButton>
                 </CModalFooter>

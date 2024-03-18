@@ -2,6 +2,7 @@ import { cilPlus } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { CButton, CCol, CForm, CFormInput, CFormTextarea, CRow } from "@coreui/react";
 import PropTypes from "prop-types";
+import { Image } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import CancelButton from "src/ui/button/CancelButton";
 
@@ -48,6 +49,9 @@ const AddManufacturerForm = (props) => {
             {...register("image")}
           />
         </CCol>
+        {props?.data?.image && (
+          <Image fluid className="my-2" style={{ height: '8rem', width:'fit-content' }} src={props?.data?.image} />
+        )}
       </CRow>
       <div className="text-end">
         <CancelButton />
