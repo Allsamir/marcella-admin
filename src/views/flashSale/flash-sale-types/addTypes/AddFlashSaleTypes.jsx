@@ -50,17 +50,11 @@ const AddFlashSaleTypes = () => {
     const formData = new FormData();
     if (sizeInput) formData.append("name", sizeInput);
     if (image) formData.append("image", image);
-    // const image = data?.image[0];
-    // const newData = {
-    //   name: sizeInput,
-    //   image
-    // }
     if (id) {
-      updateSingleType({ id, formData });
+      updateSingleType({ id, data: formData });
     } else {
       addSingleType(formData);
     }
-    console.log(data.image[0])
   };
 
   //default data set
@@ -153,8 +147,8 @@ const AddFlashSaleTypes = () => {
               )}
 
               <br />
-              {'bannerData?.image' && (
-                <Image fluid className="my-2" height={300} src={'bannerData?.image'} />
+              {size?.data?.image && (
+                <Image fluid className="my-2" height={300} src={size?.data?.image} />
               )}
             </CCol>
             <div className="text-end  ">
