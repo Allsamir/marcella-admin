@@ -1,4 +1,4 @@
-import { CCol, CFormInput, CRow } from "@coreui/react";
+import { CCol, CFormCheck, CFormInput, CRow } from "@coreui/react";
 import { Button } from "react-bootstrap";
 
 const DiscountTab = ({ register, errors, setActiveTab }) => {
@@ -59,6 +59,10 @@ const DiscountTab = ({ register, errors, setActiveTab }) => {
         {errors.quantity?.type === "min" && (
           <p className="text-danger">{errors.quantity.message}</p>
         )}
+      </CCol>
+
+      <CCol>
+        <CFormCheck {...register("freeShipping", {})} id="flexCheckDefault" label="Free Shipping" />
       </CCol>
 
       {/* <CCol xs={12}>

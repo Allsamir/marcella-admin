@@ -21,6 +21,10 @@ const upazilla = [
     id: 7,
   },
   {
+    name: "Free Shipping",
+    id: 22,
+  },
+  {
     name: "Gazipur",
     id: 8,
   },

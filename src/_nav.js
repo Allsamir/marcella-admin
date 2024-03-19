@@ -187,21 +187,21 @@ const _nav = [
         name: "Desktop banner",
         to: "/desktop-banner",
       },
-      {
-        component: CNavItem,
-        name: "Related banner",
-        to: "/related-banner",
-      },
-      {
-        component: CNavItem,
-        name: "Side banner",
-        to: "/side-banner",
-      },
-      {
-        component: CNavItem,
-        name: "Bottom banner",
-        to: "/bottom-banner",
-      },
+      // {
+      //   component: CNavItem,
+      //   name: "Related banner",
+      //   to: "/related-banner",
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: "Side banner",
+      //   to: "/side-banner",
+      // },
+      // {
+      //   component: CNavItem,
+      //   name: "Bottom banner",
+      //   to: "/bottom-banner",
+      // },
     ],
   },
   {

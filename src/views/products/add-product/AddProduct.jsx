@@ -94,6 +94,7 @@ const AddProduct = () => {
     if (shortDescription) formData.append("shortDescription", shortDescription);
     if (specification) formData.append("specification", specification);
     if (slugValue) formData.append("slug", slugValue);
+    if (data.freeShipping) formData.append("freeShipping", data.freeShipping);
 
     if (manufacturer && manufacturer !== "Pick one") formData.append("manufacturer", manufacturer);
     if (data.status) formData.append("status", data.status);
