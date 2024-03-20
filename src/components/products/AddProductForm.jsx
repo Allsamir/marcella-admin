@@ -34,7 +34,8 @@ const AddProductForm = ({
   remainingImages,
   manufacturer,
   setManufacturer,
-
+  setLibraryUrls,
+  libraryUrls,
   slugValue,
   setSlugValue,
 
@@ -152,6 +153,8 @@ const AddProductForm = ({
             setRemainingImages={setRemainingImages}
             images={images}
             setImages={setImages}
+            setLibraryUrls={setLibraryUrls}
+            libraryUrls={libraryUrls}
             setActiveTab={setActiveTab}
             setValue={setValue}
           />

@@ -23,7 +23,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [specification, setSpecification] = useState("");
-
+  const [libraryUrls, setLibraryUrls] = useState([])
   const [productTags, setProductTags] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState();
   const [imgData, setImgData] = useState([]);
@@ -110,6 +110,7 @@ const AddProduct = () => {
 
     // form data.append JSON.stringify(data)
     if (productTags) formData.append("tags", JSON.stringify(productTags));
+    if (libraryUrls) formData.append("libraryUrls", JSON.stringify(libraryUrls))
     if (data.color?.length > 0) formData.append("color", JSON.stringify(data?.color));
     if (data.size?.length > 0) formData.append("size", JSON.stringify(data?.size));
     if (data.categories?.value)
@@ -181,6 +182,8 @@ const AddProduct = () => {
                 manufacturer={manufacturer}
                 setManufacturer={setManufacturer}
                 slugValue={slugValue}
+                libraryUrls={libraryUrls}
+                setLibraryUrls={setLibraryUrls}
                 setSlugValue={setSlugValue}
               />
             ) : (

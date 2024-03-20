@@ -2,7 +2,7 @@
 import { apiSlice } from "../api/apiSlice";
 
 export const productApi = apiSlice.injectEndpoints({
-  tagsTypes: [ "SingleProduct", "LowProducts", "FlashProducts"],
+  tagsTypes: ["SingleProduct", "LowProducts", "FlashProducts"],
   endpoints: (builder) => ({
     //get all products here
     getAllProduct: builder.query({
@@ -70,6 +70,16 @@ export const productApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["SingleProduct"],
     }),
+
+
+   
+    //get all products images
+    getProductImages: builder.query({
+      query: (query) => ({
+        url: `/product/gallery-images?${query}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -81,4 +91,5 @@ export const {
   useGetSingleProductDetailsQuery,
   useUpdateSingleProductMutation,
   useGetAllFlashProductQuery,
+  useGetProductImagesQuery
 } = productApi;
