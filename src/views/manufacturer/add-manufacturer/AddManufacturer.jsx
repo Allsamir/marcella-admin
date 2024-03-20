@@ -40,7 +40,7 @@ const AddManufacturer = () => {
     } else {
       addManufacturer(formData);
     }
-    console.log(data?.image?.[0])
+  
   };
 
   const navigate = useNavigate();

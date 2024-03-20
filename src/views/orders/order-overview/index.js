@@ -6,7 +6,7 @@ import OrderOverviewTable from './OrderOverviewTable';
 
 const OrderOverviewPage = () => {
     const { data: allOrders } = useGetAllOrdersQuery('?page=1&status=Delivered')
-    console.log(allOrders?.data)
+    
     return (
         <CRow>
             <CCol xs={12}>

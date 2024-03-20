@@ -67,7 +67,7 @@ const CreateFlashSaleOffer = () => {
       addFlashSaleOffer(modifyData);
     }
 
-    console.log(modifyData)
+    
   };
 
   useEffect(() => {
