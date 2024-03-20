@@ -43,6 +43,7 @@ const AddDesktopBanner = () => {
 
     if (data.name) formData.append("name", data.name);
     if (data.product) formData.append("product", data.product);
+    if (data.campaignProducts) formData.append("campaignProducts", JSON.stringify(data.campaignProducts));
     if (data.related) formData.append("related", data.related);
     if (color) formData.append("bannerColor", color);
     if (slugValue) formData.append("slug", slugValue);
@@ -52,6 +53,7 @@ const AddDesktopBanner = () => {
     } else {
       addDesktopBanner(formData);
     }
+    console.log(data)
   };
 
   useEffect(() => {

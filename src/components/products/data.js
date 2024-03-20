@@ -29,6 +29,15 @@ export const getModifiedCategories = (categories) => {
         label: item?.title ? item?.title : item?.name,
       };
     }
+    if (item?.price) {
+      // this filed for size, colors
+      return {
+        value: item?._id,
+        label: item?.name,
+      };
+    }
+
+    
     if (item?.name) {
       // this filed for size, colors
       return {

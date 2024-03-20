@@ -30,6 +30,8 @@ import ImageLabel from "../ImageLabel";
 import { SketchPicker } from "react-color";
 import HeaderBackButton from "../button/HeaderBackButton";
 import { spaceToDash } from "src/utils/spaceToDash";
+import { useGetAllProductQuery } from "src/redux/products/productsApi";
+import { useLocation } from "react-router-dom";
 
 const AddBannerParent = ({
   bannerData,
@@ -49,10 +51,12 @@ const AddBannerParent = ({
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [defaultSlug, setDefaultSlug] = useState("");
+  const location = useLocation()
 
   const { data: categories, isLoading } = useGetAllCategoryQuery();
   const { data: subcategories } = useGetFilterSubCategoryQuery(selectedCategory);
   const { data: subcategoriesChildren } = useGetFilterSubCategoryChildrenQuery(selectedSubCategory);
+  const { data: allProducts } = useGetAllProductQuery(location.search);
   const { data: allBannerName } = useGetAllBannerNameQuery();
 
   const { handleSubmit, register, control, errors } = useForm();
@@ -78,6 +82,7 @@ const AddBannerParent = ({
   const modifiedCategories = getModifiedCategories(categories?.result);
   const modifiedSubCategories = getModifiedCategories(subcategories?.result);
   const modifiedSubCategoryChildren = getModifiedCategories(subcategoriesChildren?.result);
+  const productOptions = getModifiedCategories(allProducts?.result?.data);
 
   // banner data
   const relatedOptions = [];
@@ -109,8 +114,8 @@ const AddBannerParent = ({
     setSelectedSubCategory(selectedOptions);
   };
 
-
-
+  
+console.log('allProducts',productOptions)
   return (
     <CRow>
       <CCol xs={12}>
@@ -156,6 +161,24 @@ const AddBannerParent = ({
                   </Button>
                 </CCol>
               </CRow>
+              <CCol xs={12}>
+                <label className="w-100">Products</label>
+                <Controller
+                  control={control}
+                  name={"campaignProducts"}
+                  render={({ field: { onChange, value, name, ref } }) => (
+                    <Select
+                      className="mt-2"
+                      // defaultValue={getDefaultData(size)}
+                      inputRef={ref}
+                      options={productOptions}
+                      value={productOptions?.find((option) => option.value === value)}
+                      onChange={(val) => onChange(val?.map((opt) => opt.value))}
+                      isMulti
+                    />
+                  )}
+                />
+              </CCol>
               <CRow>
                 {isRelatedBanner && (
                   <CCol xs={12}>
