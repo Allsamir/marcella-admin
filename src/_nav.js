@@ -43,7 +43,10 @@ const _nav = [
     isAdmin: false,
 
     icon: <BsBoxSeam className="nav-icon" />,
-    items: [{ component: CNavItem, name: "All Products", to: "/product" }],
+    items: [
+      { component: CNavItem, name: "All Products", to: "/product" },
+      { component: CNavItem, name: "Add Product Type", to: "/product-type" },
+    ],
   },
   {
     component: CNavGroup,

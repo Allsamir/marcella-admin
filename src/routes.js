@@ -177,8 +177,17 @@ const Widgets = lazy(() => import("./views/widgets/Widgets"));
 const VendorPage = lazy(() => import("./views/vendor/index/VendorPage"));
 const OrderOverviewPage = lazy(() => import("./views/orders/order-overview/index"));
 
+
+
+const ProducType = lazy(() => import("./views/products/product-type/ProductType"));
+const AddProductType = lazy(() => import("./views/products/add-product-type/AddProductType"));
+
+
 const routes = [
   { isAdmin: false, path: "/product", name: "Products", element: ManageProducts, exact: false },
+  { isAdmin: false, path: "/product-type", name: "Product Type", element: ProducType, exact: false },
+  { isAdmin: false, path: "/product-type/add", name: "Add product type", element: AddProductType, exact: false },
+  { isAdmin: false, path: "/product-type/edit/:id", name: "Edit product type", element: AddProductType, exact: false },
   { isAdmin: false, path: "/product/manage", name: "Manage Products", element: ManageProducts },
   { isAdmin: false, path: "/product/add", name: "Add Product", element: AddProduct },
   { isAdmin: false, path: "/product/edit/:id", name: "Edit Product", element: AddProduct },
