@@ -8,6 +8,7 @@ import { useGetFilterSubCategoryChildrenQuery } from "src/redux/subCategoryChild
 import { useGetAllManufactureQuery } from "src/redux/manufacture/manufactureApi";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import { useGetAllproductTypeQuery } from "src/redux/productType/productTypeApi";
 
 const statusOptions = [
   { value: "IN-STOCK", label: "In-stock" },
@@ -15,17 +16,18 @@ const statusOptions = [
   { value: "PRE-ORDER", label: "Pre-order" },
 ];
 
-const productTypeOptions = [
-  // { value: "regular-products", label: "Regular products" },
-  // { value: "new-arrivals", label: "New Arrivals" },
-  // { value: "featured-products", label: "Featured Products" },
-  { value: "popular-products", label: "Popular Products" },
-  { value: "mens-fashion", label: "Men's Fashion" },
-  { value: "Womens-fashion", label: "Women's Fashion" },
-  { value: "mobile-and-gadgets", label: "Mobile And Gadgets" },
-  { value: "home-appliance", label: "Home Appliance" },
-  { value: "computing-and-gaming", label: "Computing And Gaming" },
-];
+// const productTypeOptions = [
+//   // { value: "regular-products", label: "Regular products" },
+//   // { value: "new-arrivals", label: "New Arrivals" },
+//   // { value: "featured-products", label: "Featured Products" },
+//   { value: "popular-products", label: "Popular Products" },
+//   { value: "mens-fashion", label: "Men's Fashion" },
+//   { value: "Womens-fashion", label: "Women's Fashion" },
+//   { value: "mobile-and-gadgets", label: "Mobile And Gadgets" },
+//   { value: "home-appliance", label: "Home Appliance" },
+//   { value: "computing-and-gaming", label: "Computing And Gaming" },
+// ];
+
 const LinksTab = ({
   flashSale,
   flashSaleType,
@@ -44,7 +46,7 @@ const LinksTab = ({
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [selectedSubChildrenCategory, setSelectedSubChildrenCategory] = useState("");
-
+  const { data: productType } = useGetAllproductTypeQuery()
   const { data: categories } = useGetAllCategoryQuery();
   const { data: subcategories } = useGetFilterSubCategoryQuery(selectedCategory);
   const { data: subcategoriesChildren } = useGetFilterSubCategoryChildrenQuery(selectedSubCategory);
@@ -64,6 +66,15 @@ const LinksTab = ({
   allTypes?.forEach((t) => {
     typesOptions.push({ label: t.name, value: t.name });
   });
+
+
+  const productTypeOptions = [];
+  productType?.result?.forEach((t) => {
+    productTypeOptions.push({ label: t.title, value: t.title });
+  });
+
+
+
 
   const handlePrev = () => {
     setActiveTab(2);
@@ -173,7 +184,7 @@ const LinksTab = ({
 
                       handleSubCategoryChange(selectedOptions.value._id);
                     }}
-                    // isMulti
+                  // isMulti
                   />
                 )}
               />
@@ -200,7 +211,7 @@ const LinksTab = ({
                       //   : [];
                       handleSubChildrenCategoryChange(selectedOptions.value._id);
                     }}
-                    // isMulti
+                  // isMulti
                   />
                 )}
               />
