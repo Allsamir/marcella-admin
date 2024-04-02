@@ -3,11 +3,13 @@ import CIcon from "@coreui/icons-react";
 import { CButton, CCardHeader, CTooltip } from "@coreui/react";
 import { useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import FlashSaleLibraryModal from "./flashSaleLibrayModal/FlashSaleLibraryModal";
 
 const CardHeaderButton = ({ to, title }) => {
   const [showModal, setShowModal] = useState(false);
+  const location = useLocation()
+  
   return (
     <CCardHeader className="d-flex align-items-center justify-content-between">
       <strong className="d-flex align-items-center gap-2">
@@ -17,21 +19,24 @@ const CardHeaderButton = ({ to, title }) => {
       </strong>
 
       <div className="d-flex align-items-center">
-        <CTooltip content="Add Existing Product">
-          <CButton
-            onClick={() => setShowModal(true)}
-            color="primary"
-            style={{
-              fontSize: '11px',
-              position: "relative",
-              marginRight: '10px'
-            }}
-          >
-            Add Existing Product
-          </CButton>
-        </CTooltip>
+        {
+          location?.pathname === '/flashSale' && <CTooltip content="Add Existing Product">
+            <CButton
+              onClick={() => setShowModal(true)}
+              color="primary"
+              style={{
+                fontSize: '11px',
+                position: "relative",
+                marginRight: '10px'
+              }}
+            >
+              Add Existing Product
+            </CButton>
+          </CTooltip>
+        }
+
         <FlashSaleLibraryModal setShowModal={setShowModal} showModal={showModal} />
-        
+
         <CTooltip content="Create">
           <Link to={to}>
             <CButton

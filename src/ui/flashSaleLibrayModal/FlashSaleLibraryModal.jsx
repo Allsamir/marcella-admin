@@ -23,9 +23,10 @@ import { useGetAllTypesQuery } from "src/redux/flashSaleType/flashSaleTypeApi";
 const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
     const location = useLocation();
     const [pageNumber, setPageNumber] = useState(1)
+    const [search, setSearch] = useState('');
     const [updateProduct] = useUpdateSingleProductMutation()
     const { data: allTypes, isLoading: typeLoading, isError: typeError } = useGetAllTypesQuery();
-    const { data } = useGetAllProductQuery(location.search)
+    const { data } = useGetAllProductQuery(`?search=${search}`)
     const [selectedImage, setSelectedImages] = useState([]);
     const [offerType, setOfferType] = useState(null)
 
@@ -58,8 +59,8 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
     allTypes?.data?.map((op, index) => {
         typesOptions.push(<option key={index} value={op?.name} >{op?.name}</option>)
     })
-    
-    
+
+
     return (
         <CModal
             visible={showModal}
@@ -72,12 +73,11 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
             <CRow className="mx-4 mb-2">
                 <CCol xs={6} className="mt-3">
                     <CFormInput
-                        // type={data.type}
+                        onChange={(e) => setSearch(e.target.value)}
                         id="exampleFormControlInput1"
                         label='Search Product'
                         placeholder='Search Product'
                         aria-describedby="exampleFormControlInputHelpInline"
-                    // {...register(data.register)}
                     />
                 </CCol>
                 <CCol xs={6} className="mt-3">
@@ -113,14 +113,14 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
             </CModalBody>
             <CModalFooter>
                 <CButton
-                    color="secondary"
+                    color="danger"
                     onClick={() => {
                         setShowModal(false);
                     }}
                 >
                     Cancel
                 </CButton>
-                <CButton
+                {/* <CButton
                     color="success"
                     onClick={() => {
                         handleUpload(selectedImage)
@@ -128,7 +128,7 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
                     }}
                 >
                     Upload
-                </CButton>
+                </CButton> */}
             </CModalFooter>
         </CModal >
     );
