@@ -99,7 +99,7 @@ const AddFlashSaleProducts = () => {
     if (shortDescription) formData.append("shortDescription", shortDescription);
     if (specification) formData.append("specification", specification);
     if (flashSaleType) formData.append("flashSaleOfferType", flashSaleType);
-    formData.append("productType", "flash-sale");
+    // formData.append("productType", "flash-sale");
 
     if (slugValue) formData.append("slug", slugValue);
 
