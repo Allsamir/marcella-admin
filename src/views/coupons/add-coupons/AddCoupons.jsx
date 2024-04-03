@@ -19,7 +19,7 @@ const AddCoupons = () => {
     data: coupon,
     isLoading: singleCouponLoading,
     isError: singleCouponError,
-  } = useGetSingleCouponQuery(id);
+  } = useGetSingleCouponQuery(id, { skip: !id });
 
   const [addSingleCouponById, { isLoading: addLoading, isError: addError, isSuccess: addSuccess }] =
     useAddSingleCouponByIdMutation();

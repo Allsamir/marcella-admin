@@ -2,8 +2,6 @@
 
 import { lazy } from "react";
 
-import AddCoupons from "./views/coupons/add-coupons/AddCoupons";
-import ManageCoupons from "./views/coupons/manage-coupons/ManageCoupons";
 import AddCustomerGroup from "./views/customergroup/add-customergroup/AddCustomerGroup";
 import ManageCustomerGroup from "./views/customergroup/manager-customergroup/ManageCustomerGroup";
 import Mail from "./views/mail/Mail";
@@ -177,7 +175,9 @@ const Widgets = lazy(() => import("./views/widgets/Widgets"));
 const VendorPage = lazy(() => import("./views/vendor/index/VendorPage"));
 const OrderOverviewPage = lazy(() => import("./views/orders/order-overview/index"));
 
-
+// coupon 
+const AddCoupons = lazy(() => import("./views/coupons/add-coupons/AddCoupons"));
+const ManageCoupons = lazy(() => import("./views/coupons/manage-coupons/ManageCoupons"));
 
 const ProducType = lazy(() => import("./views/products/product-type/ProductType"));
 const AddProductType = lazy(() => import("./views/products/add-product-type/AddProductType"));
@@ -304,13 +304,13 @@ const routes = [
     element: ManageCoupons,
   },
   {
-    isAdmin: true,
+    isAdmin: false,
     path: "/coupon/add",
     name: "Add coupon",
     element: AddCoupons,
   },
   {
-    isAdmin: true,
+    isAdmin: false,
     path: "/coupon/edit/:id",
     name: "Edit coupon",
     element: AddCoupons,
