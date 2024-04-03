@@ -25,7 +25,7 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
     const [search, setSearch] = useState('');
     const [updateProduct] = useUpdateSingleProductMutation()
     const { data: allTypes, isLoading: typeLoading, isError: typeError } = useGetAllTypesQuery();
-    const { data } = useGetAllProductQuery(`?search=${search}`)
+    const { data } = useGetAllProductQuery(`?&page=${pageNumber}&search=${search}`)
     const [selectedImage, setSelectedImages] = useState([]);
     const [offerType, setOfferType] = useState(null)
 
@@ -92,7 +92,7 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
                     {
                         data?.result?.data?.map(d =>
                             <div key={d?._id} className="library-image" >
-                                <Image src={d?.images[0]} style={{height:'120px'}} />
+                                <Image src={d?.images[0]} style={{ height: '120px' }} />
                                 <p className="text-center">{d?.name}</p>
                                 <input
                                     disabled={!offerType}
