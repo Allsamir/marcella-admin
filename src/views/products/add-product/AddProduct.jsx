@@ -113,12 +113,12 @@ const AddProduct = () => {
     if (libraryUrls) formData.append("libraryUrls", JSON.stringify(libraryUrls))
     if (data.color?.length > 0) formData.append("color", JSON.stringify(data?.color));
     if (data.size?.length > 0) formData.append("size", JSON.stringify(data?.size));
-    if (data.categories?.value)
-      formData.append("categories", JSON.stringify(data?.categories.value));
-    if (data.subcategories?.value)
-      formData.append("subcategories", JSON.stringify(data?.subcategories.value));
-    if (data.subcategoryChildren?.value)
-      formData.append("subcategoryChildren", JSON.stringify(data?.subcategoryChildren.value));
+    if (data.categories?.length > 0)
+      formData.append("categories", JSON.stringify(data?.categories));
+    if (data.subcategories?.length > 0)
+      formData.append("subcategories", JSON.stringify(data?.subcategories));
+    if (data.subcategoryChildren?.length > 0)
+      formData.append("subcategoryChildren", JSON.stringify(data?.subcategoryChildren));
 
     if (id) {
       remainingImages.forEach((img) => {
@@ -129,6 +129,7 @@ const AddProduct = () => {
     } else {
       adSingleProduct(formData);
     }
+    console.log(data)
   };
 
   return (

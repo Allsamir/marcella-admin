@@ -83,19 +83,37 @@ const LinksTab = ({
     setActiveTab(4);
   };
 
+  // const handleCategoryChange = (selectedOptions) => {
+  //   selectedOptions?.map(val => setSelectedCategory(val?._id))
+  //   // setSelectedCategory([...selectedOptions]);
+  //   setSelectedSubCategory("");
+  //   setSelectedSubChildrenCategory("");
+  //   console.log('selectedOptions', selectedOptions)
+  // };
+
   const handleCategoryChange = (selectedOptions) => {
-    setSelectedCategory(selectedOptions);
-    setSelectedSubCategory("");
+    const selectedCategoryIds = selectedOptions?.map(val => val?._id);
+    // Constructing the query string
+    const queryString = selectedCategoryIds.map(id => `parent=${id}`).join('&');
+    setSelectedCategory(queryString)
     setSelectedSubChildrenCategory("");
+    setSelectedSubCategory("");
   };
 
+
   const handleSubCategoryChange = (selectedOptions) => {
-    setSelectedSubCategory(selectedOptions);
+    const selectedCategoryIds = selectedOptions?.map(val => val?._id);
+    // Constructing the query string
+    const queryString = selectedCategoryIds.map(id => `parent=${id}`).join('&');
+    setSelectedSubCategory(queryString)
     setSelectedSubChildrenCategory("");
   };
 
   const handleSubChildrenCategoryChange = (selectedOptions) => {
-    setSelectedSubChildrenCategory(selectedOptions);
+    const selectedCategoryIds = selectedOptions?.map(val => val?._id);
+    // Constructing the query string
+    const queryString = selectedCategoryIds.map(id => `parent=${id}`).join('&');
+    setSelectedSubChildrenCategory(queryString)
   };
 
   return (
@@ -131,7 +149,7 @@ const LinksTab = ({
           />
 
           {errors.productType?.type === "required" && (
-            <p className="text-danger">{errors.price.message}</p>
+            <p className="text-danger">{errors?.price?.message}</p>
           )}
         </CCol>
       )}
@@ -156,10 +174,11 @@ const LinksTab = ({
                     inputRef={ref}
                     options={modifiedCategories}
                     value={modifiedCategories?.find((option) => option.value === value)}
-                    onChange={(selectedOptions) => {
-                      onChange(selectedOptions);
-                      handleCategoryChange(selectedOptions.value._id);
+                    onChange={selectedOptions => {
+                      onChange(selectedOptions.map(opt => opt.value));
+                      handleCategoryChange(selectedOptions.map(opt => opt.value));
                     }}
+                    isMulti
                   />
                 )}
               />
@@ -179,12 +198,11 @@ const LinksTab = ({
                     isDisabled={!selectedCategory}
                     options={modifiedSubcategories}
                     value={modifiedSubcategories?.find((option) => option.value === value)}
-                    onChange={(selectedOptions) => {
-                      onChange(selectedOptions);
-
-                      handleSubCategoryChange(selectedOptions.value._id);
+                    onChange={selectedOptions => {
+                      onChange(selectedOptions.map(opt => opt.value));
+                      handleSubCategoryChange(selectedOptions.map(opt => opt.value));
                     }}
-                  // isMulti
+                    isMulti
                   />
                 )}
               />
@@ -204,14 +222,11 @@ const LinksTab = ({
                     isDisabled={!selectedSubCategory}
                     options={modifiedSubcategoryChildren}
                     value={modifiedSubcategoryChildren?.find((option) => option.value === value)}
-                    onChange={(selectedOptions) => {
-                      onChange(selectedOptions);
-                      // const selectedValues = selectedOptions
-                      //   ? selectedOptions.map((option) => option.value?._id)
-                      //   : [];
-                      handleSubChildrenCategoryChange(selectedOptions.value._id);
+                    onChange={selectedOptions => {
+                      onChange(selectedOptions.map(opt => opt.value));
+                      handleSubChildrenCategoryChange(selectedOptions.map(opt => opt.value));
                     }}
-                  // isMulti
+                    isMulti
                   />
                 )}
               />

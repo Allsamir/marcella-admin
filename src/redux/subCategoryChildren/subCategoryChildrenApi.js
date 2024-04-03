@@ -15,7 +15,7 @@ export const subCategoryChildrenApi = apiSlice.injectEndpoints({
     // get all subcategory children
     getFilterSubCategoryChildren: builder.query({
       query: (selectedSubCategory) => ({
-        url: `/subcategory-children/filter?parent=${selectedSubCategory}`,
+        url: `/subcategory-children/filter?${selectedSubCategory}`,
         method: "GET",
       }),
       providesTags: ["SubCategoryChildren"],
