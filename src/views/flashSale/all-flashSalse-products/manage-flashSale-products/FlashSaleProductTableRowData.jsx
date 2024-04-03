@@ -5,7 +5,7 @@ import { CTableDataCell, CTableHeaderCell, CTableRow } from "@coreui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useDeleteSingleProductMutation } from "src/redux/products/productsApi";
+import { useDeleteSingleProductMutation, useUpdateSingleProductMutation } from "src/redux/products/productsApi";
 import DeleteButton from "src/ui/button/DeleteButton";
 import EditButton from "src/ui/button/EditButton";
 import DeleteModal from "src/ui/DeleteModal";
@@ -13,12 +13,19 @@ const FlashSaleProductTableRowData = ({ product, index }) => {
   const [showModal, setShowModal] = useState(false);
 
   const [
-    deleteSingleProduct,
+    updateProduct,
     { isLoading: deleteLoading, isSuccess: deleteSuccess, isError: deleteError },
-  ] = useDeleteSingleProductMutation();
+  ] = useUpdateSingleProductMutation();
 
-  const handleDeleteProduct = (id) => {
-    deleteSingleProduct(id);
+  const handleDeleteProduct = (product) => {
+    const formData = new FormData();
+
+    formData.append("flashSale", false);
+    if (product?._id) product?.images.forEach((img) => {
+      formData.append("prevImage", img);
+    });
+
+    updateProduct({ id: product?._id, data: formData })
   };
 
   useEffect(() => {
@@ -62,7 +69,7 @@ const FlashSaleProductTableRowData = ({ product, index }) => {
         deleteThis={handleDeleteProduct}
         showModal={showModal}
         setShowModal={setShowModal}
-        id={product._id}
+        id={product}
         deleteLoading={deleteLoading}
       />
     </CTableRow>

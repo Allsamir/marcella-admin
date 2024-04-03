@@ -17,7 +17,6 @@ import { useEffect, useState } from "react";
 import { useGetAllProductQuery, useUpdateSingleProductMutation } from "src/redux/products/productsApi";
 import { useLocation } from "react-router-dom";
 import { Controller } from "react-hook-form";
-import { useGetAllproductTypeQuery } from "src/redux/productType/productTypeApi";
 import { useGetAllTypesQuery } from "src/redux/flashSaleType/flashSaleTypeApi";
 
 const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
@@ -45,7 +44,6 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
 
         formData.append("flashSale", true);
         if (offerType) formData.append("flashSaleOfferType", offerType);
-        if (d.name) formData.append("productType", 'flash-sale');
         if (d?._id) d?.images.forEach((img) => {
             formData.append("prevImage", img);
         });
@@ -90,13 +88,14 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
                 </CCol>
             </CRow>
             <CModalBody>
-                <div className="library-image-container">
+                <div className="flash-product-image-gallery">
                     {
                         data?.result?.data?.map(d =>
                             <div key={d?._id} className="library-image" >
-                                <Image src={d?.images[0]} />
+                                <Image src={d?.images[0]} style={{height:'120px'}} />
                                 <p className="text-center">{d?.name}</p>
                                 <input
+                                    disabled={!offerType}
                                     onClick={() => handleSelect(d)}
                                     className={`${d?.productType === 'flash-sale' ? "image-selected" : ""}`}
                                     type="checkbox"
@@ -120,15 +119,6 @@ const FlashSaleLibraryModal = ({ showModal, setShowModal, handleUpload }) => {
                 >
                     Cancel
                 </CButton>
-                {/* <CButton
-                    color="success"
-                    onClick={() => {
-                        handleUpload(selectedImage)
-                        setShowModal(false);
-                    }}
-                >
-                    Upload
-                </CButton> */}
             </CModalFooter>
         </CModal >
     );
