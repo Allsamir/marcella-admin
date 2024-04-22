@@ -15,9 +15,9 @@ const CompanyInfo = ({ orderData }) => {
           </div>
           <Col xs={8} className="mt-2">
             <p className="fw-bold ">
-              6/A, Nigar Plaza (Near Rajlaxmi Complex), Level: 06,<br />
-              House: 32-B, Road: 2, Sector: 3, Uttara, Dhaka 1230 <br />
-              Phone: +88 01810-077844
+              Road No: 04, Baridhara DOHS, Dhaka. <br />
+              Dhaka-1206, Bangladesh. <br />
+              Phone: +88 01894-961361
             </p>
           </Col>
           <Col xs={4} className="mt-2 text-end">

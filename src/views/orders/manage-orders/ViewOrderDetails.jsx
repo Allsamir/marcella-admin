@@ -2,7 +2,7 @@
 import { cilPrint } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { CButton, CCol, CRow, CTooltip } from "@coreui/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
@@ -14,8 +14,11 @@ import OrderHistory from "./OrderHistory";
 import CompanyInfo from "./CompanyInfo";
 import Loading from "src/ui/Loading";
 import back from "../../../assets/brand/back.png";
+import PrintMethod from "./PrintMethod";
+import InvoiceQrCode from "./InvoiceQrCode";
 
 const ViewOrderDetails = () => {
+  const [selectedValue, setSelectedValue] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: orderData, isLoading } = useGetSingleOrderByIdQuery(id);
@@ -28,6 +31,10 @@ const ViewOrderDetails = () => {
   return (
     <CRow className="g-4">
       <div className="d-flex justify-content-end">
+        <PrintMethod
+          selectedValue={selectedValue}
+          setSelectedValue={setSelectedValue}
+        />
         <CTooltip content="Print Invoice">
           <CButton
             color="primary"
@@ -51,11 +58,20 @@ const ViewOrderDetails = () => {
       </div>
 
       {!isLoading ? (
-        <CRow ref={componentRef} className="g-4 px-2">
-          <CompanyInfo orderData={orderData?.result} />
-          <AddressDetails orderData={orderData?.result} />
-          <OrderDetails orderData={orderData?.result} />
-        </CRow>
+        <>
+          {
+            selectedValue === 'qr' ?
+              <InvoiceQrCode
+                orderData={orderData?.result}
+                componentRef={componentRef} /> :
+              <CRow ref={componentRef} className="g-4 px-2">
+                <CompanyInfo orderData={orderData?.result} />
+                <AddressDetails orderData={orderData?.result} />
+                <OrderDetails orderData={orderData?.result} />
+              </CRow>
+
+          }
+        </>
       ) : (
         <Loading />
       )}
