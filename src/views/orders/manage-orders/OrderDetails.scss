@@ -1,7 +1,44 @@
-.icon_parent{
+.icon_parent {
   height: 24px;
   width: 24px;
   background-color: #5bc0de;
-  border-radius: 2px ;
-  border: 1px solid  #39b3d7;
+  border-radius: 2px;
+  border: 1px solid #39b3d7;
+}
+
+.qr-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.qr-header-text p {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.qr-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-right: 1px solid #000;
+}
+
+
+.qr-add {
+  border-bottom: 1px solid #000;
+  font-size: 14px;
+  width: 100%;
+}
+
+.qr-add p {
+  margin-bottom: 0px;
+  padding-left: 5px;
 }

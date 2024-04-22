@@ -42,7 +42,7 @@ const VendorTable = ({ vendor, index }) => {
             <CTableDataCell>{new Date(createdAt).toLocaleString()}</CTableDataCell>
             <CTableDataCell>
                 <Link
-                    to={`https://marcella-ten.vercel.app/shop/${slug}`}
+                    to={`https://veendeshi.com/shop/${slug}`}
                     target='_blank'
                     style={{
                         textAlign: 'center',

@@ -1,11 +1,15 @@
 import JsBarcode from 'jsbarcode';
 import QRCode from 'qrcode.react';
 import React, { useEffect, useRef } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useGetSingleSellerByIdQuery } from 'src/redux/seller/sellerApi';
+import './OrderDetails.scss'
 
 const InvoiceQrCode = ({ orderData, componentRef }) => {
     const { address, createdAt, orderId } = orderData || {};
     const barcodeRef = useRef()
+
+    const sellerId = orderData?.products?.map(item => item?.product?.sellerId)
+    const { data: sellerAddress } = useGetSingleSellerByIdQuery(...sellerId)
 
 
     useEffect(() => {
@@ -19,41 +23,42 @@ const InvoiceQrCode = ({ orderData, componentRef }) => {
             });
         }
     }, [orderId]);
-    
+
 
     return (
-        <div ref={componentRef}>
-            <Container className="border border-black w-50 mt-10 bg-white">
-                <Row className="grid grid-cols-3">
-                    <Col className="p-1" style={{ borderRight: '1px solid #000' }}>
-                        <h1 className="uppercase text-primary text-3xl font-semibold text-center w-100">Veendeshi</h1>
-                    </Col>
-                    <Col className="p-1" style={{ borderRight: '1px solid #000' }}>
-                        <p className="text-xs text-center text-black">Order Id</p>
-                        <p className="text-center text-xs">{orderId}</p>
-                    </Col>
-                    <Col className="p-1">
-                        <p className="text-xs text-center">Date</p>
-                        <p className="text-center text-xs">{new Date(createdAt).toDateString()}</p>
-                    </Col>
-                </Row>
-                <Row className="flex justify-center items-center border-top border-bottom border-black">
-                    <svg ref={barcodeRef}></svg>
-                </Row>
-                <Row className="flex items-center justify-center py-5">
-                    <Col className="flex items-center justify-center">
-                        <QRCode value={address?.address} />
-                    </Col>
-                    <Col style={{ borderLeft: '1px solid #000' }}>
-                        <div className='border-bottom border-black pl-3 py-3'>
-                            <p className="text-black text-xs">Recipient: {address?.shippingName}</p>
-                            <p className="text-black text-xs">{address?.address}</p>
-                            <p className="text-black text-xs">{address?.shippingPhone}</p>
-                        </div>
-                        <p className="text-black text-xs pl-3 py-3">Seller: {address?.address}</p>
-                    </Col>
-                </Row>
-            </Container>
+        <div ref={componentRef} className="container border border-black w-50 mt-10 bg-white">
+            <div className="qr-header">
+                <div className="" style={{ borderRight: '1px solid #000' }}>
+                    <h1 className="uppercase text-primary text-3xl font-semibold text-center w-100">Veendeshi</h1>
+                </div>
+                <div className="qr-header-text" style={{ borderRight: '1px solid #000' }}>
+                    <p>Order Id</p>
+                    <p>{orderId}</p>
+                </div>
+                <div className='qr-header-text'>
+                    <p>Date</p>
+                    <p>{new Date(createdAt).toDateString()}</p>
+                </div>
+            </div>
+            <div className="row flex justify-center items-center border-top border-bottom border-black">
+                <svg ref={barcodeRef}></svg>
+            </div>
+            <div className="qr-container">
+                <div className="qr-code">
+                    <QRCode value={sellerAddress?.data?.address} />
+                </div>
+                <div className="qr-add-cont">
+                    <div className='qr-add'>
+                        <p>Recipient: {address?.shippingName}</p>
+                        <p>{address?.address}</p>
+                        <p>{address?.shippingPhone}</p>
+                    </div>
+                    <div className='qr-add'>
+                        <p>Seller: {sellerAddress?.data?.name}</p>
+                        <p>{sellerAddress?.data?.address}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
