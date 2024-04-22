@@ -45,7 +45,7 @@ const InvoiceQrCode = ({ orderData, componentRef }) => {
             </div>
             <div className="qr-container">
                 <div className="qr-code">
-                    <QRCode value={sellerAddress?.data?.address} />
+                    <QRCode value={sellerAddress ? sellerAddress?.data?.address : 'Baridhara DOHS, Dhaka. Dhaka-1206, Bangladesh.'} />
                 </div>
                 <div className="qr-add-cont">
                     <div className='qr-add'>
@@ -53,10 +53,20 @@ const InvoiceQrCode = ({ orderData, componentRef }) => {
                         <p>{address?.address}</p>
                         <p>{address?.shippingPhone}</p>
                     </div>
-                    <div className='qr-add'>
-                        <p>Seller: {sellerAddress?.data?.name}</p>
-                        <p>{sellerAddress?.data?.address}</p>
-                    </div>
+                    {
+                        sellerAddress ?
+                            <div className='qr-add'>
+                                <p>Seller: {sellerAddress?.data?.name}</p>
+                                <p>{sellerAddress?.data?.address}</p>
+                            </div>
+                            :
+                            <div className='qr-add'>
+                                <p>Veendeshi</p>
+                                <p>Baridhara DOHS, Dhaka. Dhaka-1206, Bangladesh.</p>
+                                <p>Phone: +88 01894-961361</p>
+                            </div>
+                    }
+
                 </div>
             </div>
         </div>
