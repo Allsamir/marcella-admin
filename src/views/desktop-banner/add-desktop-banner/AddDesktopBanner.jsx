@@ -49,11 +49,10 @@ const AddDesktopBanner = () => {
     if (slugValue) formData.append("slug", slugValue);
 
     if (id) {
-      updateDesktopBanner({ id: id, formData: formData });
+      updateDesktopBanner({ id: bannerData?.data?._id, formData: formData });
     } else {
       addDesktopBanner(formData);
     }
-    console.log(data)
   };
 
   useEffect(() => {

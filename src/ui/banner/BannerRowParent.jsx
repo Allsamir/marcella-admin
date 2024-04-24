@@ -7,7 +7,7 @@ import EditButton from "../button/EditButton";
 import DeleteModal from "../DeleteModal";
 
 const BannerRowParent = ({ data, index, deleteBannerHook, deleteLoading, to }) => {
-  const { image, _id, name } = data || {};
+  const { image, _id, slug, name } = data || {};
   const [showModal, setShowModal] = useState(false);
   return (
     <CTableRow>
@@ -23,7 +23,7 @@ const BannerRowParent = ({ data, index, deleteBannerHook, deleteLoading, to }) =
       </CTableDataCell>
       <CTableDataCell>
         <div className="">
-          <Link to={`/${to}/edit/${_id}`}>
+          <Link to={`/${to}/edit/${slug}`}>
             <EditButton />
           </Link>
           <DeleteButton setShowModal={setShowModal} />
