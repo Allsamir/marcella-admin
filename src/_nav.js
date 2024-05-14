@@ -148,37 +148,37 @@ const _nav = [
       },
     ],
   },
-  {
-    component: CNavGroup,
-    name: "Customer Group",
-    isAdmin: false,
-    icon: <BsPeople className="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "Customer Group",
-        to: "/customer-group",
-      },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: "New Customer Offer",
-    isAdmin: false,
-    icon: <BsOctagonFill className="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "Create Offer",
-        to: "/create-offer",
-      },
-      {
-        component: CNavItem,
-        name: "Show All Offer",
-        to: "/see-all-offer",
-      },
-    ],
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: "Customer Group",
+  //   isAdmin: false,
+  //   icon: <BsPeople className="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: "Customer Group",
+  //       to: "/customer-group",
+  //     },
+  //   ],
+  // },
+  // {
+  //   component: CNavGroup,
+  //   name: "New Customer Offer",
+  //   isAdmin: false,
+  //   icon: <BsOctagonFill className="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: "Create Offer",
+  //       to: "/create-offer",
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: "Show All Offer",
+  //       to: "/see-all-offer",
+  //     },
+  //   ],
+  // },
   {
     component: CNavGroup,
     name: "Banner",
