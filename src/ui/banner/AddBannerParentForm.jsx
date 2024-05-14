@@ -46,7 +46,9 @@ const AddBannerParent = ({
   color,
   setColor,
   slugValue,
-  setSlugValue
+  setSlugValue,
+  urlValue,
+  setUrlValue
 }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
@@ -114,8 +116,8 @@ const AddBannerParent = ({
     setSelectedSubCategory(selectedOptions);
   };
 
-  
-console.log('allProducts',productOptions)
+
+  console.log('allProducts', productOptions)
   return (
     <CRow>
       <CCol xs={12}>
@@ -140,7 +142,7 @@ console.log('allProducts',productOptions)
               <CRow className="mt-2">
                 <CCol md={11}>
                   <label className="mb-2">
-                    URL Slug <span className="text-danger">*</span>
+                    Slug <span className="text-danger">*</span>
                   </label>
                   <CFormInput
                     type="text"
@@ -158,6 +160,29 @@ console.log('allProducts',productOptions)
                     onClick={() => setSlugValue(spaceToDash(defaultSlug.toLocaleLowerCase()))}
                   >
                     Generate
+                  </Button>
+                </CCol>
+              </CRow>
+              <CRow className="mt-2">
+                <CCol md={11}>
+                  <label className="mb-2">
+                    URL
+                  </label>
+                  <CFormInput
+                    type="text"
+                    id="nameInputField"
+                    placeholder="Enter Url with https"
+                    aria-describedby="nameInputField"
+                    value={urlValue}
+                    onChange={(e) => setUrlValue(e.target.value)}
+                  />
+                </CCol>
+                <CCol style={{ marginTop: "1.8rem" }} md={1}>
+                  <Button
+                    className="p-1 bg-danger border-danger"
+                    onClick={() => setUrlValue(' ')}
+                  >
+                    Remove
                   </Button>
                 </CCol>
               </CRow>

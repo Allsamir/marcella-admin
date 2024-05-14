@@ -17,6 +17,7 @@ const AddDesktopBanner = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState("#000000");
   const [slugValue, setSlugValue] = useState("");
+  const [urlValue, setUrlValue] = useState("");
 
   const {
     data: bannerData,
@@ -47,6 +48,7 @@ const AddDesktopBanner = () => {
     if (data.related) formData.append("related", data.related);
     if (color) formData.append("bannerColor", color);
     if (slugValue) formData.append("slug", slugValue);
+    if (urlValue) formData.append("url", urlValue);
 
     if (id) {
       updateDesktopBanner({ id: bannerData?.data?._id, formData: formData });
@@ -68,6 +70,9 @@ const AddDesktopBanner = () => {
   useEffect(() => {
     setSlugValue(bannerData?.data?.slug)
   }, [bannerData]);
+  useEffect(() => {
+    setUrlValue(bannerData?.data?.url)
+  }, [bannerData]);
 
   return (
     <>
@@ -83,6 +88,8 @@ const AddDesktopBanner = () => {
           setColor={setColor}
           slugValue={slugValue}
           setSlugValue={setSlugValue}
+          urlValue={urlValue}
+          setUrlValue={setUrlValue}
         />
       ) : (
         <Loading />
