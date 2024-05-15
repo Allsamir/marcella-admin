@@ -181,6 +181,8 @@ const ManageCoupons = lazy(() => import("./views/coupons/manage-coupons/ManageCo
 
 const ProducType = lazy(() => import("./views/products/product-type/ProductType"));
 const AddProductType = lazy(() => import("./views/products/add-product-type/AddProductType"));
+const AddHeaderTagSettigs = lazy(() => import("./components/dynamicCode/HeaderCode"));
+const AddBodyTagSettigs = lazy(() => import("./components/dynamicCode/BodyCode"));
 
 
 const routes = [
@@ -540,10 +542,26 @@ const routes = [
   // },
 
   {
-    isAdmin: true,
+    isAdmin: false,
     path: "/settings",
     name: "Settings",
     element: Settings,
+    exact: true,
+  },
+
+  {
+    isAdmin: false,
+    path: "/settings/header/add",
+    name: "Header",
+    element: AddHeaderTagSettigs,
+    exact: true,
+  },
+
+  {
+    isAdmin: false,
+    path: "/settings/body/add",
+    name: "Body",
+    element: AddBodyTagSettigs,
     exact: true,
   },
   // banner images route start
