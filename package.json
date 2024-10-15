@@ -11,7 +11,7 @@
     "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
   },
   "license": "MIT",
-  "author": "Bengal Software",
+  "author": "Bengal",
   "scripts": {
     "build": "react-scripts build",
     "changelog": "auto-changelog --starting-version 4.4.0 --commit-limit false --hide-credit",
@@ -23,6 +23,7 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand"
   },
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "^4.2.1",
     "@coreui/icons": "^2.1.0",

@@ -12,6 +12,6 @@ app.get("*", (req, res) => {
 });
 
 // if not in production use the port 5000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT);

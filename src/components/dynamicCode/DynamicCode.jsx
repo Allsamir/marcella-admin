@@ -13,7 +13,7 @@ const DynamicCode = () => {
                         <CardHeaderButton title={"Headers"} to={"/settings/header/add"} />
 
                         <CCardBody>
-                            <p className="text-medium-emphasis small">Here is the list of all brands.</p>
+                            <p className="text-medium-emphasis small">Here is the list of all Header Scripts.</p>
 
                             <CTable align="middle" className="mb-0 border" bordered hover responsive>
                                 <CTableHead color="light">
@@ -21,7 +21,7 @@ const DynamicCode = () => {
                                         <CTableHeaderCell scope="col" style={{ width: "60px", minWidth: "60px" }}>
                                             Sl. No.
                                         </CTableHeaderCell>
-                                        <CTableHeaderCell scope="col">Name</CTableHeaderCell>
+                                        <CTableHeaderCell scope="col">Title</CTableHeaderCell>
                                         <CTableHeaderCell
                                             scope="col"
                                             style={{
@@ -47,7 +47,7 @@ const DynamicCode = () => {
                     <CCard className="mb-4">
                         <CardHeaderButton title={"Body"} to={"/settings/body/add"} />
                         <CCardBody>
-                            <p className="text-medium-emphasis small">Here is the list of all brands.</p>
+                            <p className="text-medium-emphasis small">Here is the list of all Body Scripts.</p>
 
                             <CTable align="middle" className="mb-0 border" bordered hover responsive>
                                 <CTableHead color="light">
@@ -55,7 +55,7 @@ const DynamicCode = () => {
                                         <CTableHeaderCell scope="col" style={{ width: "60px", minWidth: "60px" }}>
                                             Sl. No.
                                         </CTableHeaderCell>
-                                        <CTableHeaderCell scope="col">Name</CTableHeaderCell>
+                                        <CTableHeaderCell scope="col">Title</CTableHeaderCell>
                                         <CTableHeaderCell
                                             scope="col"
                                             style={{
