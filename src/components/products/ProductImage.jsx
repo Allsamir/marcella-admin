@@ -47,7 +47,7 @@ const ProductImage = ({ register, setImages, errors, images, setRemainingImages,
                     <CFormInput
                         type="file"
                         id="file-upload"
-                        accept=".jpg, .png, .jpeg, .gif"
+                        accept=".jpg, .png, .jpeg, .gif, .webp"
                         multiple
                         aria-describedby="file-upload"
                         {...register("images", {
