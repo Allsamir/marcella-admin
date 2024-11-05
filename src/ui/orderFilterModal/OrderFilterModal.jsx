@@ -83,7 +83,6 @@ const OrderStatusModal = ({ showModal, setShowModal, query, showUserInfo }) => {
         setShowModal(false);
       }}
       className="orderModal"
-      style={{ minHeight: "50vh" }}
     >
       <CModalHeader closeButton className="fw-bold fs-5">
         Your searching results
